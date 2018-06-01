@@ -1,0 +1,9 @@
+C:\Users\van Veen\source\repos\SLT_Site\DataModellen\bin\Debug\netcoreapp2.0\DataModellen.deps.json
+C:\Users\van Veen\source\repos\SLT_Site\DataModellen\bin\Debug\netcoreapp2.0\DataModellen.dll
+C:\Users\van Veen\source\repos\SLT_Site\DataModellen\bin\Debug\netcoreapp2.0\DataModellen.pdb
+C:\Users\van Veen\source\repos\SLT_Site\DataModellen\obj\Debug\netcoreapp2.0\DataModellen.csprojResolveAssemblyReference.cache
+C:\Users\van Veen\source\repos\SLT_Site\DataModellen\obj\Debug\netcoreapp2.0\DataModellen.csproj.CoreCompileInputs.cache
+C:\Users\van Veen\source\repos\SLT_Site\DataModellen\obj\Debug\netcoreapp2.0\DataModellen.AssemblyInfoInputs.cache
+C:\Users\van Veen\source\repos\SLT_Site\DataModellen\obj\Debug\netcoreapp2.0\DataModellen.AssemblyInfo.cs
+C:\Users\van Veen\source\repos\SLT_Site\DataModellen\obj\Debug\netcoreapp2.0\DataModellen.dll
+C:\Users\van Veen\source\repos\SLT_Site\DataModellen\obj\Debug\netcoreapp2.0\DataModellen.pdb
