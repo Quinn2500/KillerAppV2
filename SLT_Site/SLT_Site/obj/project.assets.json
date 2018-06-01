@@ -12751,11 +12751,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\SLT_Site\\SLT_Site.csproj",
+      "projectUniqueName": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\SLT_Site\\SLT_Site.csproj",
       "projectName": "SLT_Site",
-      "projectPath": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\SLT_Site\\SLT_Site.csproj",
+      "projectPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\SLT_Site\\SLT_Site.csproj",
       "packagesPath": "C:\\Users\\van Veen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\SLT_Site\\obj\\",
+      "outputPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\SLT_Site\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12774,8 +12774,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\DAL\\DAL.csproj"
+            "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\DAL\\DAL.csproj": {
+              "projectPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\DAL\\DAL.csproj"
             }
           }
         }

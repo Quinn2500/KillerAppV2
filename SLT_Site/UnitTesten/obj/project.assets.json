@@ -1756,6 +1756,10 @@
       "Business/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "DAL": "1.0.0",
+          "DataModellen": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Business.dll": {}
         },
@@ -6114,11 +6118,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\UnitTesten\\UnitTesten.csproj",
+      "projectUniqueName": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\UnitTesten\\UnitTesten.csproj",
       "projectName": "UnitTesten",
-      "projectPath": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\UnitTesten\\UnitTesten.csproj",
+      "projectPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\UnitTesten\\UnitTesten.csproj",
       "packagesPath": "C:\\Users\\van Veen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\UnitTesten\\obj\\",
+      "outputPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\UnitTesten\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6137,11 +6141,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\DAL\\DAL.csproj"
+            "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\DAL\\DAL.csproj": {
+              "projectPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\DAL\\DAL.csproj"
             },
-            "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\Business\\Business.csproj": {
-              "projectPath": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\Business\\Business.csproj"
+            "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\Business\\Business.csproj": {
+              "projectPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\Business\\Business.csproj"
             }
           }
         }

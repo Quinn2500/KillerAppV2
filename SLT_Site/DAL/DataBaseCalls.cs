@@ -34,22 +34,24 @@ namespace DAL
             MySqlCommand cmd = new MySqlCommand(query, mConn);
             foreach (MySqlParameter param in p)
                 cmd.Parameters.Add(param);
-
             cmd.ExecuteNonQuery();
             mConn.Close();
         }
 
-        private void Command(string query)
+        private void Command(string query, List<MySqlParameter> p)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand(query, mConn);
-            mySqlCommand.ExecuteNonQuery();
+            MySqlCommand cmd = new MySqlCommand(query, mConn);
+            foreach (MySqlParameter param in p)
+                cmd.Parameters.Add(param);
+            cmd.ExecuteNonQuery();
         }
 
-        private DataTable Select(string query)
+        private DataTable Select(string query, MySqlParameter p)
         {
 
             DataTable dtResult = new DataTable();
             MySqlCommand cmd = new MySqlCommand(query, mConn);
+            cmd.Parameters.Add(p);
             mConn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
             dtResult.Load(reader);
@@ -57,10 +59,12 @@ namespace DAL
             return dtResult;
         }
 
-        private string Read(string query)
+        private string Read(string query, List<MySqlParameter> p)
         {
             string antwoord = "leeg";
             MySqlCommand cmd = new MySqlCommand(query, mConn);
+            foreach (MySqlParameter param in p)
+                cmd.Parameters.Add(param);
             mConn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
@@ -85,7 +89,7 @@ namespace DAL
         }
         public void CreateAccount(string username, string password, string email, string firstname, string lastname)
         {
-            List<MySqlParameter> List = new List<MySqlParameter>()
+            List<MySqlParameter> p = new List<MySqlParameter>()
             {
                 new MySqlParameter("@Username", username),
                 new MySqlParameter("@Password", password),
@@ -93,56 +97,87 @@ namespace DAL
                 new MySqlParameter("@LastName", lastname),
                 new MySqlParameter("@Email", email)
             };
-            SqlCommand("INSERT INTO gebruiker(Gebruikersnaam, Wachtwoord, Voornaam, Achternaam, Email) VALUES (@Username, @Password, @FirstName,@LastName, @Email)", List);
+            SqlCommand("INSERT INTO gebruiker(Gebruikersnaam, Wachtwoord, Voornaam, Achternaam, Email) VALUES (@Username, @Password, @FirstName,@LastName, @Email)", p);
         }
 
         public string GetPassword(string username)
         {
-            return Read($"SELECT gebruiker.Wachtwoord FROM gebruiker WHERE gebruiker.Gebruikersnaam = '{username}'");
+            List<MySqlParameter> p = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@Username", username),
+            };
+            return Read("SELECT gebruiker.Wachtwoord FROM gebruiker WHERE gebruiker.Gebruikersnaam = @Username",p);
 
         }
 
         public DataTable GetAllLijsten(string username)
         {
-            return Select($"SELECT * FROM `lijst` WHERE lijst.Gebruikersnaam = '{username}'");
+            MySqlParameter p = new MySqlParameter("@Username", username);
+            return Select($"SELECT * FROM `lijst` WHERE lijst.Gebruikersnaam = @Username",p);
         }
 
         public DataTable Getlijst(int id)
         {
-            return Select($"SELECT * FROM `lijst` WHERE lijst.ID = '{id}'");
+            MySqlParameter p = new MySqlParameter("@ID", id);
+            return Select("SELECT * FROM `lijst` WHERE lijst.ID = ID", p);
         }
 
         public void InsertLijst(Lijst l)
         {
             mConn.Open();
-            Command($"INSERT INTO lijst(Gebruikersnaam, Soort, Datum, Naam, Openbaar) VALUES ('{l.Gebruikersnaam}', '{l.Soort}', '{l.Datum}','{l.Titel}', '{l.isPublic}')");
+            List<MySqlParameter> LijstParameter = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@Username", l.Gebruikersnaam),
+                new MySqlParameter("@Soort", l.Soort),
+                new MySqlParameter("@Date", l.Datum),
+                new MySqlParameter("@Titel", l.Titel),
+                new MySqlParameter("@IsPublic", l.isPublic)
+            };
+            Command("INSERT INTO lijst(Gebruikersnaam, Soort, Datum, Naam, Openbaar) VALUES (@Username, @Soort, @Date,@Titel, @IsPublic)", LijstParameter);
             int cijfer = LastID();
             mConn.Close();
             foreach (Woord w in l.WoordenLijst)
             {
+                List<MySqlParameter> WoordParameter = new List<MySqlParameter>()
+                {
+                    new MySqlParameter("@Begrip", w.Begrip),
+                    new MySqlParameter("@Betekenis", w.Betekenis)
+                };
                 mConn.Open();
-                Command($"INSERT INTO woorden(Woord, Betekenis) VALUES ('{w.Begrip}', '{w.Betekenis}')");
+                Command("INSERT INTO woorden(Woord, Betekenis) VALUES (@Begrip, @Betekenis)", WoordParameter);
                 int nummer = LastID();
                 mConn.Close();
-                //SqlCommand($"INSERT INTO woordtolijst(WoordID, LijstID) VALUES ('{nummer}', '{cijfer}')");
+                List<MySqlParameter> KoppelParameter = new List<MySqlParameter>()
+                {
+                    new MySqlParameter("@Nummer", nummer),
+                    new MySqlParameter("@Cijfer", cijfer)
+                };
+                SqlCommand("INSERT INTO woordtolijst(WoordID, LijstID) VALUES (@Nummer, @Cijfer)",KoppelParameter);
             }
             mConn.Close();
         }
 
         public DataTable GetWoordenFromLijst(int id)
         {
-            return Select($"SELECT woorden.Woord, woorden.Betekenis FROM woordtolijst INNER JOIN woorden on woordtolijst.WoordID = woorden.ID WHERE woordtolijst.LijstID = '{id}'");
+            MySqlParameter p = new MySqlParameter("@ID", id);
+            return Select("SELECT woorden.Woord, woorden.Betekenis FROM woordtolijst INNER JOIN woorden on woordtolijst.WoordID = woorden.ID WHERE woordtolijst.LijstID = @ID",p);
         }
 
         public int GetLijstID(string username, string lijstnaam)
         {
-            string s = Read($"SELECT lijst.ID FROM `lijst` WHERE lijst.Gebruikersnaam = '{username}' AND lijst.Naam = '{lijstnaam}'");
+            List<MySqlParameter> p = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@Username", username),
+                new MySqlParameter("@Lijstnaam", lijstnaam)
+            };
+            string s = Read($"SELECT lijst.ID FROM `lijst` WHERE lijst.Gebruikersnaam = @Username AND lijst.Naam = @Lijstnaam",p);
             return Convert.ToInt32(s);
         }
 
         public DataTable GetOpenbareLijsten(string username)
         {
-            return Select($"SELECT * FROM `lijst` WHERE lijst.Openbaar = 1 && lijst.Gebruikersnaam != '{username}'");
+            MySqlParameter p = new MySqlParameter("@Username", username);
+            return Select("SELECT * FROM `lijst` WHERE lijst.Openbaar = 1 && lijst.Gebruikersnaam != @Username",p);
         }
     }
 }

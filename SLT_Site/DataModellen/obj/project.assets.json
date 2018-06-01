@@ -673,11 +673,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\DataModellen\\DataModellen.csproj",
+      "projectUniqueName": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\DataModellen\\DataModellen.csproj",
       "projectName": "DataModellen",
-      "projectPath": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\DataModellen\\DataModellen.csproj",
+      "projectPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\DataModellen\\DataModellen.csproj",
       "packagesPath": "C:\\Users\\van Veen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\van Veen\\source\\repos\\SLT_Site\\DataModellen\\obj\\",
+      "outputPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\DataModellen\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
