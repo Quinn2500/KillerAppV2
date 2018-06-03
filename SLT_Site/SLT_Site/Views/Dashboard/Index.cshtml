@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+    ListOverviewLogic logic = new ListOverviewLogic();
+    
+}
+@using Business
+@using Business.Dashboard
+@model SLT_Site.Models.Dashboard.DashboardModel
+
+<h3>@ViewData["User"]</h3>
+<div id="AllLijsten">
+    @foreach (string n in Model.Lijsten)
+    {
+        <text>
+            <div>
+                <a asp-area="" asp-controller="Dashboard" asp-action="ZieLijst" asp-route-id="@n">@n</a>
+                <a asp-area="" asp-controller="Overhoring" asp-action="OptieMenu" asp-route-id="@n">Overhoren!</a>
+            </div>
+        </text>
+    }
+</div>
+
+<a asp-area="" asp-controller="Dashboard" asp-action="Lijstmaken">Klik hier om een lijst te maken</a>
+
+

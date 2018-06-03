@@ -22,11 +22,13 @@ namespace SLT_Site
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSession();
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
@@ -43,7 +45,15 @@ namespace SLT_Site
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}");
+
+                routes.MapRoute(
+                    name: "dashboard",
+                    template: "{controller=dashbaordController}/{action=Index}/{id}");
+
+                routes.MapRoute(
+                    name: "Overhoring",
+                    template: "{controller=OverhoringController}/{action=Index}/{id}");
             });
         }
     }

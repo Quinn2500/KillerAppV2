@@ -7,3 +7,16 @@ C:\Users\van Veen\source\repos\SLT_Site\Business\obj\Debug\netcoreapp2.0\Busines
 C:\Users\van Veen\source\repos\SLT_Site\Business\obj\Debug\netcoreapp2.0\Business.AssemblyInfo.cs
 C:\Users\van Veen\source\repos\SLT_Site\Business\obj\Debug\netcoreapp2.0\Business.dll
 C:\Users\van Veen\source\repos\SLT_Site\Business\obj\Debug\netcoreapp2.0\Business.pdb
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\bin\Debug\netcoreapp2.0\Business.deps.json
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\bin\Debug\netcoreapp2.0\Business.dll
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\bin\Debug\netcoreapp2.0\Business.pdb
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\bin\Debug\netcoreapp2.0\DAL.dll
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\bin\Debug\netcoreapp2.0\DataModellen.dll
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\bin\Debug\netcoreapp2.0\DAL.pdb
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\bin\Debug\netcoreapp2.0\DataModellen.pdb
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\obj\Debug\netcoreapp2.0\Business.csprojResolveAssemblyReference.cache
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\obj\Debug\netcoreapp2.0\Business.csproj.CoreCompileInputs.cache
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\obj\Debug\netcoreapp2.0\Business.AssemblyInfoInputs.cache
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\obj\Debug\netcoreapp2.0\Business.AssemblyInfo.cs
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\obj\Debug\netcoreapp2.0\Business.dll
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\Business\obj\Debug\netcoreapp2.0\Business.pdb

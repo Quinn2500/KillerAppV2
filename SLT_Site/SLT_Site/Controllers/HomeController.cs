@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using DAL;
+﻿using Business;
+using DataModellen;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SLT_Site.Models;
 
@@ -11,30 +8,77 @@ namespace SLT_Site.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        [HttpGet]
+        public ActionResult Index()
         {
-            DataBaseCalls db = new DataBaseCalls();
-            db.CreateAccount("Jow","Dikke","gmail","","");
-            return View();
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                LoginLogic loginLogic = new LoginLogic();
+                if (loginLogic.Connectie() != null)
+                {
+                    return StatusCode(404, loginLogic.Connectie());
+                }
+                IndexModel model = new IndexModel();
+                ViewData["Message"] = TempData["Succes"];
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
         }
 
-        public IActionResult About()
+        [HttpPost]
+        public ActionResult Index(IndexModel model)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            else
+            {
+                LoginLogic loginLogic = new LoginLogic();
+                if (loginLogic.Login(model.username, model.password) != null)
+                {
+                    HttpContext.Session.SetString("Username", model.username);
+                    return RedirectToAction("Index", "Dashboard");
+                }
+                else
+                {
+                    TempData["Succes"] = "U bent niet ingelogd";
+                    return RedirectToAction("Index");
+                }
+            }
         }
 
-        public IActionResult Contact()
+        [HttpGet]
+        public ActionResult Account()
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            AccountModel model = new AccountModel();
+            return View(model);
         }
 
-        public IActionResult Error()
+        [HttpPost]
+        public ActionResult Account(AccountModel model)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            Gebruiker user = new Gebruiker()
+            {
+                Username = model.username,
+                Email = model.email,
+                FirstName = model.fname,
+                LastName = model.lname,
+                Password = model.password
+            };
+            AccountLogic ac = new AccountLogic();
+            ac.RegisterUser(user);
+            TempData["Succes"] = "Uw account is succesvol aangemaakt.";
+            return RedirectToAction("Index");
         }
+
+
     }
 }

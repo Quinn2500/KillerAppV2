@@ -1,0 +1,67 @@
+﻿@using DataModellen
+@{
+    Overhoring h = ViewBag.Overhoring;
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+    var i = 0;
+    var t = 0;
+    var k = 1;
+    var fout = 0;
+    var goed = 0;
+    $(document).ready(function () {
+        var WordsArray = @Html.Raw(ViewBag.Test);
+        if ("@h.Random" == "True") {
+            WordsArray = Shuffle(WordsArray);
+        }
+        if ("@h.Vraag" == "Betekenis") {
+            t = 1;
+            k = 0;
+        }
+        $("#Vraag").text(WordsArray[i][t]);
+        $("#button").click(function () {
+            if (i != WordsArray.length - 1) {
+                var input = $("#textInput").val();
+                if (input == WordsArray[i][k]) {
+                    goed++;
+                } else {
+                    fout++;
+                }
+                i++;
+                $("#AantalFout").text("Aantal fout: " + fout);
+                $("#AantalGoed").text("Aantal goed: " + goed);
+                $("#Vraag").text(WordsArray[i][t]);
+            } else {
+                $("#AantalFout").text("Aantal fout: " + fout);
+                $("#AantalGoed").text("Aantal goed: " + goed);
+                setTimeout(redirect, 3000);
+            }
+        });
+    });
+
+    function redirect() {
+        window.location.href = '@Url.Action("Index", "dashboard")';
+    }
+
+    function Shuffle(test) {
+        var input = test;
+     
+        for (var i = input.length-1; i >=0; i--) {
+     
+            var randomIndex = Math.floor(Math.random()*(i+1)); 
+            var itemAtIndex = input[randomIndex]; 
+         
+            input[randomIndex] = input[i]; 
+            input[i] = itemAtIndex;
+        }
+        return input;
+    }
+</script>
+
+<h3 id="Vraag"></h3>
+<input type="text" id="textInput" />
+<button id="button">Volgende Vraag</button>
+<h3 id="AantalFout">Aantal fout: 0</h3>
+<h3 id="AantalGoed">Aantal goed: 0</h3>

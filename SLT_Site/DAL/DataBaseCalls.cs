@@ -87,7 +87,7 @@ namespace DAL
 
             return antwoord;
         }
-        public void CreateAccount(string username, string password, string email, string firstname, string lastname)
+        public void CreateAccount(string username, string password, string email, string firstname, string lastname, bool isadmin)
         {
             List<MySqlParameter> p = new List<MySqlParameter>()
             {
@@ -95,9 +95,10 @@ namespace DAL
                 new MySqlParameter("@Password", password),
                 new MySqlParameter("@FirstName", firstname),
                 new MySqlParameter("@LastName", lastname),
-                new MySqlParameter("@Email", email)
+                new MySqlParameter("@Email", email),
+                new MySqlParameter("@IsAdmin", isadmin)
             };
-            SqlCommand("INSERT INTO gebruiker(Gebruikersnaam, Wachtwoord, Voornaam, Achternaam, Email) VALUES (@Username, @Password, @FirstName,@LastName, @Email)", p);
+            SqlCommand("INSERT INTO gebruiker(Gebruikersnaam, Wachtwoord, Voornaam, Achternaam, Email) VALUES (@Username, @Password, @FirstName,@LastName, @Email, @IsAdmin)", p);
         }
 
         public string GetPassword(string username)

@@ -1,10 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
+using DAL;
 
 namespace Business.Dashboard
 {
-    class DashboardLogic
+    public class DashboardLogic
     {
+        DataBaseCalls db = new DataBaseCalls();
+
+        public List<string> LijstNamen(string username)
+        {
+            List<string> namen = new List<string>();
+            foreach (DataRow dr in db.GetAllLijsten(username).Rows)
+            {
+                namen.Add(dr[4].ToString());
+            }
+
+            return namen;
+        }
     }
 }

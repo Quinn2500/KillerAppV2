@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataModellen
 {
-    class Gebruiker : User
+    public class Gebruiker : User
     {
         private bool mIsAdmin = false;
         public bool IsAdmin { get { return mIsAdmin; } }

@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "OptieMenu";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $( document ).ready(function() {
+        console.log("ready!");
+        $(".rbtn_Vologorde").click(function () {
+            if (document.getElementById('radio_BegripVraag').checked) {
+                $("#radio_BetekenisAntwoord").prop("checked", true);
+            }
+            else if (document.getElementById('radio_BegripAntwoord').checked) {
+                $("#radio_BetekenisVraag").prop("checked", true);
+            }
+            else if (document.getElementById('radio_BetekenisVraag').checked) {
+                $("#radio_BegripAntwoord").prop("checked", true);
+            }
+        });
+        $("#StartOverhoring").click(function () {
+            var OptieString = "@ViewBag.LijstID"+"%";
+            if (document.getElementById('radio_BegripVraag').checked) {
+                OptieString += "Vraag=Begrip?Antwoord=Betekenis|";
+            } else if (document.getElementById('radio_BegripAntwoord').checked) {
+                OptieString += "Vraag=Betekenis?Antwoord=Begrip|";
+            }
+
+            if (document.getElementById('radio_Standaard').checked) {
+                OptieString += "Soort=Standaard|";
+            }
+
+            if (document.getElementById('checkbox_RandomVologorde').checked) {
+                OptieString += "Optie=RandomVologorde|";
+            } else {
+                OptieString += "Optie=StandaardVologorde|";
+            }
+            console.log(OptieString);
+            var url = '@Url.Action("StartOverhoring", "Overhoring", new { id = "__id__" })';
+            window.location.href = url.replace('__id__', OptieString);
+        });
+    });
+</script>
+
+
+<h1>Optie Menu Overhoring</h1>
+
+<div id="OverhoringVologorde">
+    <h2>Soort Overhoring</h2>
+    <form>
+        <h3>Vraag</h3>
+        <input class="rbtn_Vologorde" id="radio_BegripVraag" type="radio" name="vologorde" value="BegripAntwoord" checked> Woord/Begrip<br>
+        <input class="rbtn_Vologorde" id="radio_BetekenisVraag" type="radio" name="vologorde" value="BetekenisAntwoord"> Betekenis
+        
+        <h3>Antwoord</h3>
+        <input class="rbtn_Vologorde" id="radio_BegripAntwoord" type="radio" name="vologordeBetekenis" value="BegripAntwoord"> Woord/Begrip<br>
+        <input class="rbtn_Vologorde" id="radio_BetekenisAntwoord" type="radio" name="vologordeBetekenis" value="BetekenisAntwoord" checked> Betekenis
+    </form>
+</div>
+
+<div id="OverhoringSoort">
+    <h2>Soort Overhoring</h2>
+    <form>
+        <input id="radio_Standaard" type="radio" name="soort" value="Standaard" checked> Standaard<br>
+    </form>
+</div>
+
+<div id="OverhoringInstellingen">
+    <h2>Instellingen</h2>
+    <label>In willekeurige vologorde Overhoren: <input type="checkbox" id="checkbox_RandomVologorde"/> </label>
+
+</div>
+
+<button id="StartOverhoring">Start Overhoring!</button>

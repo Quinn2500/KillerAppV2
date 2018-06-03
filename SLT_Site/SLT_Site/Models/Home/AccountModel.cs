@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace SLT_Site.Models
+{
+    public class AccountModel
+    {
+        [Required(ErrorMessage = "Voer een gebruikersnaam in.")]
+        [StringLength(50, ErrorMessage = "The First Name must be less than {1} characters.")]
+        [Display(Name = "Gebruikersnaam:")]
+        public string username { get; set; }
+
+        [Required(ErrorMessage = "Voer een wachtwoord in.")]
+        [Display(Name = "Wachtwoord:")]
+        [MaxLength(32, ErrorMessage = "Wachtwoord mag maximaal 32 tekens lang zijn")]
+        [MinLength(4, ErrorMessage = "Wachtwoord moet minimaal 4 tekens lang zijn")]
+        [RegularExpression(@"^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\@#$%^&+=]).*$", ErrorMessage = "Je wachtwoord moet mininaal 1 nummer, 1 hoofdletter, 1 kleine letter en een speciaal teken bevatten")]
+        [DataType(DataType.Password)]
+        public string password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Compare("password", ErrorMessage = "De wachtwoorden komen niet overeen.")]
+        [Display(Name = "Herhaal je Wachtwoord:")]
+        public string password2 { get; set; }
+
+        [EmailAddress(ErrorMessage = "The Email Address is not valid")]
+        [Required(ErrorMessage = "Voer een email adres in.")]
+        [Display(Name = "Email Address:")]
+        public string email { get; set; }
+
+        [Display(Name = "Voornaam:")]
+        public string fname { get; set; }
+
+        [Display(Name = "Achternaam:")]
+        public string lname { get; set; }
+    }
+}

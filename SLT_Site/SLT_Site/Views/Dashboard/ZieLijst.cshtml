@@ -1,0 +1,16 @@
+﻿@using DataModellen
+@{Lijst l = ViewBag.List;}
+
+<h3>@l.Titel</h3>
+
+@foreach (Woord w in l.WoordenLijst)
+{
+    @:<p>@w.Begrip - @w.Betekenis</p>
+}
+
+
+
+
+
+
+

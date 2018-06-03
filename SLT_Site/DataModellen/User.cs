@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataModellen
 {
-    class User
+    public class User
     {
         private string mUsername;
         private string mPassword;

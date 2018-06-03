@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewData["Title"] = "Testje";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<h3>@ViewData["User"]</h3>
+
+<script>
+    $(document).ready(function() {
+        console.log("ready!");
+
+        $("#save").click(function () {
+            var woordjesAntwoordjesString = "";
+            woordjesAntwoordjesString += $('#LijstTitel').val() + "/";
+            $('#WoordenTabel tr').each(function() {
+                if ($(this).hasClass("Row")) {
+                    if ($(this).find(".woordje").val() != "" && $(this).find(".antwoord").val() != "") {
+
+                        woordjesAntwoordjesString += $(this).find(".woordje").val() +
+                            "-" +
+                            $(this).find(".antwoord").val() +
+                            "|";
+                    }
+                }
+            });
+            if (document.getElementById('checkbox_Openbaar').checked) {
+                woordjesAntwoordjesString += "?isPublic=true";
+            } else {
+                woordjesAntwoordjesString += "?isPublic=false";
+            }
+            if (document.getElementById('radio_SoortWoordjes').checked) {
+                woordjesAntwoordjesString += "/Woordjes";
+            } else {
+                woordjesAntwoordjesString += "/FlashCards";
+            }
+            var url = '@Url.Action("LijstOverzicht", "Dashboard", new { id = "__id__" })';
+            window.location.href = url.replace('__id__', woordjesAntwoordjesString);
+        });
+    });
+
+    function UpSize() {
+        document.getElementsByClassName("Row").css("width", function() {
+            return that.checked ? "200px" : "";
+
+            //afmaken
+        });
+    }
+
+    function RemoveRow(currElement)
+    {
+        var parentRowIndex = currElement.parentNode.parentNode.rowIndex;
+        document.getElementById("WoordenTabel").deleteRow(parentRowIndex);
+    }
+
+    function InsRow(n)
+    {
+        var tr = n.parentNode.parentNode.cloneNode(true);
+        document.getElementById('WoordenTabel').appendChild(tr);
+    }
+</script>
+
+<div id="TitelBox">
+    <h2>De Lijst Titel:</h2>
+    <input type="text" value="De Titel" name="txtboxTitel" id="LijstTitel" />
+</div>
+
+
+<table id="WoordenTabel">
+    <tbody>
+    <tr>
+        <th>Woordje</th>
+        <th>Antwoordje</th>
+    </tr>
+    @for (int i = 0; i < 10; i++)
+    {
+        <tr class="Row">
+            <td>
+                <input type="text" name="Woord" class="woordje"/>
+            </td>
+            <td>
+                <input type="text" name="Betekenis" class="antwoord" />
+            </td>
+            <td>
+                <input type="button" onclick="RemoveRow(this)" value="-" />
+            </td>
+            <td>
+                <input type="button" onclick="InsRow(this)" value="+" />
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div id="Options">
+    <label>Openbaar: <input type="checkbox" id="checkbox_Openbaar"/> </label>
+    <div>
+        <form>
+            <input id="radio_SoortWoordjes" type="radio" name="soort" value="Woordjes" checked> Woordjes<br>
+            <input type="radio" name="soort" value="Flashcards"  onclick="UpSize"> Flashcards
+        </form> 
+    </div>
+</div>
+<input type="button" value="Save"  id="save"/>
+
