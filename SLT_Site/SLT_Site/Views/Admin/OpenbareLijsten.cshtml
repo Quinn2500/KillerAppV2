@@ -1,0 +1,17 @@
+﻿@using DataModellen
+<head>
+    <title>SLT</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/Admin.css")" />
+</head>
+<body>
+<div id="AllLijsten">
+    @foreach (Lijst n in Model.PublicLists)
+    {
+        <text>
+            <a asp-area="" asp-controller="Dashboard" asp-action="ZieLijst" asp-route-id="@n.Titel?@n.Gebruikersnaam" class="order">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum </a>
+            <a asp-area="" asp-controller="Admin" asp-action="ApproveList" asp-route-id="@n.Titel?@n.Gebruikersnaam" class="order"> Keur Lijst goed </a>
+            <a asp-area="" asp-controller="Admin" asp-action="RemovePublic" asp-route-id="@n.Titel?@n.Gebruikersnaam" class="order">Haal public weg </a>
+        </text>
+    }
+</div>
+</body>

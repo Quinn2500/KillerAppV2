@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Business.Login;
-using DataModellen;
-using DAL;
+﻿using DAL;
 
-namespace Business
+namespace Business.Login
 {
     public class LoginLogic
     {
@@ -25,6 +20,18 @@ namespace Business
             else
             {
                 return null;
+            }
+        }
+
+        public bool CheckIfAdmin(string username)
+        {
+            if (db.CheckIfAdmin(username) == "True")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

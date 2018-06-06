@@ -22,20 +22,24 @@
         }
         $("#Vraag").text(WordsArray[i][t]);
         $("#button").click(function () {
+             var input = $("#textInput").val()
+             if (input == WordsArray[i][k]) {
+                 goed++;
+             } else {
+                 fout++;
+             }
+             i++;
             if (i != WordsArray.length - 1) {
-                var input = $("#textInput").val();
-                if (input == WordsArray[i][k]) {
-                    goed++;
-                } else {
-                    fout++;
-                }
-                i++;
                 $("#AantalFout").text("Aantal fout: " + fout);
                 $("#AantalGoed").text("Aantal goed: " + goed);
                 $("#Vraag").text(WordsArray[i][t]);
-            } else {
+                $("#textInput").val("");
+                }
+            else 
+            {
                 $("#AantalFout").text("Aantal fout: " + fout);
                 $("#AantalGoed").text("Aantal goed: " + goed);
+                $("#textInput").val("");
                 setTimeout(redirect, 3000);
             }
         });

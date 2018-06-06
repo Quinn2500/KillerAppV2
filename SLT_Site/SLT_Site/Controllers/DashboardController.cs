@@ -15,7 +15,7 @@ namespace SLT_Site.Controllers
         public ActionResult Index()
         {
             DashboardModel model = new DashboardModel();
-            model.Lijsten = logic.LijstNamen(HttpContext.Session.GetString("Username"));
+            model.Lijsten = logic.ListNames(HttpContext.Session.GetString("Username"));
             ViewData["User"] = HttpContext.Session.GetString("Username");
             return View(model);
         }
@@ -44,12 +44,12 @@ namespace SLT_Site.Controllers
                 string[] t = id.Split('?');
                 string user = t[1];
                 id = t[0];
-                Lijst l = logic.GeefLijst(id, user);
+                Lijst l = logic.GiveList(id, user);
                 ViewBag.List = l;
             }
             else
             {
-                Lijst l = logic.GeefLijst(id, HttpContext.Session.GetString("Username"));
+                Lijst l = logic.GiveList(id, HttpContext.Session.GetString("Username"));
                 ViewBag.List = l;
             }
             return View();
@@ -60,8 +60,23 @@ namespace SLT_Site.Controllers
         {
             PublicListLogic logic = new PublicListLogic();
             PublicListModel model = new PublicListModel();
-            model.PublicLists = logic.GetAlleOpenbareLijsten(HttpContext.Session.GetString("Username"));
+            model.PublicLists = logic.GetAllPublicLists(HttpContext.Session.GetString("Username"));
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteList(string id)
+        {
+            DashboardLogic logic = new DashboardLogic();
+            logic.DeleteList(id, HttpContext.Session.GetString("Username"));
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index","Home");
         }
     }
 }

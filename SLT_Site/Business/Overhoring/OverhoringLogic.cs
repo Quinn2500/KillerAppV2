@@ -13,7 +13,7 @@ namespace Business.Overhoring
             DataModellen.Overhoring overhoring = new DataModellen.Overhoring();
             string[] OptieString = id.Split('%');
             string LijstNaam = OptieString[0];
-            overhoring.WoordenLijst = getLijst.GeefLijst(LijstNaam, username).WoordenLijst;
+            overhoring.WoordenLijst = getLijst.GiveList(LijstNaam, username).WoordenLijst;
             string[] Opties = OptieString[1].Split('|');
             overhoring.Vraag = Opties[0].Split('?')[0].Split('=')[1];
             overhoring.Soort = Opties[1].Split('=')[1];

@@ -1,0 +1,47 @@
+﻿#loginBox {
+    width: 150px;
+    height: 110px;
+}
+
+#mainContent {
+    width: 250px;
+    height: 200px;
+}
+
+#loginButton {
+    width: 60px;
+    height: 22px;
+}
+
+.centerItem {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="text"], input[type="password"] {
+    font-family: 'Raleway', sans-serif;
+    border: 2px solid;
+    border-radius: 6px;
+}
+
+input[type=submit] {
+    margin-top: 6px;
+    border: 2px solid;
+    border-radius: 6px;
+}
+
+#MainLogo {
+    font: 600 1.5em/1 'Raleway', sans-serif;
+    color: darkblue;
+    background-color: aquamarine;
+    border-radius: 6px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    top: 25%;
+    width: 400px;
+}
+
+label[for=username], label[for=password] {
+    font-family: 'Raleway', sans-serif;
+}

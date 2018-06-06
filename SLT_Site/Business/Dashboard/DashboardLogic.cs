@@ -10,7 +10,7 @@ namespace Business.Dashboard
     {
         DataBaseCalls db = new DataBaseCalls();
 
-        public List<string> LijstNamen(string username)
+        public List<string> ListNames(string username)
         {
             List<string> namen = new List<string>();
             foreach (DataRow dr in db.GetAllLijsten(username).Rows)
@@ -19,6 +19,11 @@ namespace Business.Dashboard
             }
 
             return namen;
+        }
+
+        public void DeleteList(string id, string username)
+        {
+            db.DeleteList(db.GetLijstID(username, id));
         }
     }
 }

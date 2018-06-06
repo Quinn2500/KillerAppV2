@@ -10,7 +10,7 @@ namespace Business.Dashboard
     public class PublicListLogic
     {
         DataBaseCalls db = new DataBaseCalls();
-        public List<Lijst> GetAlleOpenbareLijsten(string user)
+        public List<Lijst> GetAllPublicLists(string user)
         {
             List<Lijst> antwoord = new List<Lijst>();
             Lijst l = new Lijst();

@@ -1,4 +1,4 @@
-﻿using Business;
+﻿using Business.Login;
 using DataModellen;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -41,7 +41,14 @@ namespace SLT_Site.Controllers
                 if (loginLogic.Login(model.username, model.password) != null)
                 {
                     HttpContext.Session.SetString("Username", model.username);
-                    return RedirectToAction("Index", "Dashboard");
+                    if (loginLogic.CheckIfAdmin(model.username))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Dashboard");
+                    }
                 }
                 else
                 {
@@ -61,8 +68,10 @@ namespace SLT_Site.Controllers
         [HttpPost]
         public ActionResult Account(AccountModel model)
         {
-            if (!ModelState.IsValid)
+            AccountLogic ac = new AccountLogic();
+            if (!ModelState.IsValid || ac.CheckIfUserExitst(model.username) != null)
             {
+                ViewData["Bericht"]= ac.CheckIfUserExitst(model.username);
                 return View(model);
             }
             Gebruiker user = new Gebruiker()
@@ -73,7 +82,6 @@ namespace SLT_Site.Controllers
                 LastName = model.lname,
                 Password = model.password
             };
-            AccountLogic ac = new AccountLogic();
             ac.RegisterUser(user);
             TempData["Succes"] = "Uw account is succesvol aangemaakt.";
             return RedirectToAction("Index");

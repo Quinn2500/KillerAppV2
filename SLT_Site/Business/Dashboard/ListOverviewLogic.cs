@@ -11,7 +11,7 @@ namespace Business.Dashboard
     {
         DataBaseCalls db = new DataBaseCalls();
 
-        public Lijst GeefLijst(string lijstnaam, string username)
+        public Lijst GiveList(string lijstnaam, string username)
         {
             int id = db.GetLijstID(username, lijstnaam);
             DataTable data = db.Getlijst(id);

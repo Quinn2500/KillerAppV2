@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using DataModellen;
 using MySql.Data.MySqlClient;
@@ -64,7 +65,9 @@ namespace DAL
             string antwoord = "leeg";
             MySqlCommand cmd = new MySqlCommand(query, mConn);
             foreach (MySqlParameter param in p)
+            {
                 cmd.Parameters.Add(param);
+            }
             mConn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
@@ -89,16 +92,17 @@ namespace DAL
         }
         public void CreateAccount(string username, string password, string email, string firstname, string lastname, bool isadmin)
         {
-            List<MySqlParameter> p = new List<MySqlParameter>()
-            {
-                new MySqlParameter("@Username", username),
-                new MySqlParameter("@Password", password),
-                new MySqlParameter("@FirstName", firstname),
-                new MySqlParameter("@LastName", lastname),
-                new MySqlParameter("@Email", email),
-                new MySqlParameter("@IsAdmin", isadmin)
-            };
-            SqlCommand("INSERT INTO gebruiker(Gebruikersnaam, Wachtwoord, Voornaam, Achternaam, Email) VALUES (@Username, @Password, @FirstName,@LastName, @Email, @IsAdmin)", p);
+            MySqlCommand cmd = new MySqlCommand("AddUser", mConn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@Username", MySqlDbType.VarChar).Value = username;
+            cmd.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
+            cmd.Parameters.Add("@FirstName", MySqlDbType.VarChar).Value = firstname;
+            cmd.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = lastname;
+            cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = email;
+            cmd.Parameters.AddWithValue("@IsAdmin", isadmin);
+            mConn.Open();
+            cmd.ExecuteNonQuery();
+            mConn.Close();
         }
 
         public string GetPassword(string username)
@@ -114,7 +118,7 @@ namespace DAL
         public DataTable GetAllLijsten(string username)
         {
             MySqlParameter p = new MySqlParameter("@Username", username);
-            return Select($"SELECT * FROM `lijst` WHERE lijst.Gebruikersnaam = @Username",p);
+            return Select("SELECT * FROM `lijst` WHERE lijst.Gebruikersnaam = @Username", p);
         }
 
         public DataTable Getlijst(int id)
@@ -171,7 +175,7 @@ namespace DAL
                 new MySqlParameter("@Username", username),
                 new MySqlParameter("@Lijstnaam", lijstnaam)
             };
-            string s = Read($"SELECT lijst.ID FROM `lijst` WHERE lijst.Gebruikersnaam = @Username AND lijst.Naam = @Lijstnaam",p);
+            string s = Read("SELECT lijst.ID FROM `lijst` WHERE lijst.Gebruikersnaam = @Username AND lijst.Naam = @Lijstnaam",p);
             return Convert.ToInt32(s);
         }
 
@@ -179,6 +183,51 @@ namespace DAL
         {
             MySqlParameter p = new MySqlParameter("@Username", username);
             return Select("SELECT * FROM `lijst` WHERE lijst.Openbaar = 1 && lijst.Gebruikersnaam != @Username",p);
+        }
+
+        public void ApproveList(int id)
+        {
+            List<MySqlParameter> p = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@ID", id),
+            };
+            SqlCommand("UPDATE lijst SET lijst.Goedkgekeurd = 1 WHERE lijst.ID = @ID",p);
+        }
+
+        public void DeleteList(int id)
+        {
+            List<MySqlParameter> p = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@ID", id),
+            };
+            SqlCommand("DELETE FROM lijst WHERE lijst.ID = @ID", p);
+        }
+
+        public int CheckIfUsernameExitst(string username)
+        {
+            List<MySqlParameter> p = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@Username", username),
+            };
+            return Convert.ToInt32(Read("SELECT COUNT(gebruiker.Gebruikersnaam) FROM `gebruiker` WHERE gebruiker.Gebruikersnaam = @Username",p));
+        }
+
+        public string CheckIfAdmin(string username)
+        {
+            List<MySqlParameter> p = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@Username", username),
+            };
+            return Read("SELECT gebruiker.Admin FROM `gebruiker` WHERE gebruiker.Gebruikersnaam = @Username", p);            
+        }
+
+        public void RemovePublic(int id)
+        {
+            List<MySqlParameter> p = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@ID", id),
+            };
+            SqlCommand("UPDATE lijst SET lijst.Openbbaar = 0 WHERE lijst.ID = @ID", p);
         }
     }
 }

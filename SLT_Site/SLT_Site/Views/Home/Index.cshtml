@@ -1,45 +1,47 @@
 ﻿@{
     Layout = "";
 }
+@using Microsoft.AspNetCore.Razor.Language.Intermediate
 @model IndexModel
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>SLT</title>
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/site.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/HomeIndex.css")" />
 </head>
 <body>
-    <div id="MainLogo">
-        <h3>Student Leer Tool</h3>
-    </div>
-    @using (Html.BeginForm())
-    {
-        <div>
-            <div>
-                @Html.LabelFor(x => x.username)
-                @Html.TextBoxFor(x => x.username)
-                @Html.ValidationMessageFor(x => x.username, "", new { @style = "color: red;" })
-            </div>
-            <div>
-                @Html.LabelFor(x => x.password)
-                @Html.PasswordFor(x => x.password)
-                @Html.ValidationMessageFor(x => x.password)
-            </div>
-            <div>
-                <input type="submit" value="Save" />
-            </div>
-        </div>
-    }
-<div>
-    <a asp-area="" asp-controller="Home" asp-action="Account">Klik hier als je nog geen account hebt!</a>
+<div id="MainLogo" class="centerItem">
+    <h3>Student Leer Tool</h3>
 </div>
-@if (ViewData["Message"] != null)
-{
-    <div>
-        <p>Bericht: @ViewData["Message"] </p>
+    <div id="mainContent" class="centerItem">
+        @using (Html.BeginForm())
+        {
+            <div id="loginBox" class="centerItem">
+                <div>
+                    @Html.LabelFor(x => x.username)
+                    @Html.TextBoxFor(x => x.username)
+                    @Html.ValidationMessageFor(x => x.username)
+                </div>
+                <div>
+                    @Html.LabelFor(x => x.password)
+                    @Html.PasswordFor(x => x.password)
+                    @Html.ValidationMessageFor(x => x.password)
+                </div>
+                <div id="loginButton" class="centerItem">
+                    <input type="submit" value="Log In!" />
+                </div>
+            </div>
+        }
+        <div>
+            <a asp-area="" asp-controller="Home" asp-action="Account">Klik hier als je nog geen account hebt!</a>
+        </div>
+        @if (ViewData["Message"] != null)
+        {
+            <div>
+                <p>Bericht: @ViewData["Message"] </p>
+            </div>
+        }
     </div>
-}
-
 </body>
 </html>
