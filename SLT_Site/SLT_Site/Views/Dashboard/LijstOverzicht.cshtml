@@ -1,7 +1,10 @@
 ﻿@using DataModellen
-@{Lijst l = ViewBag.Lijst;}
+@model SLT_Site.Models.Dashboard.ListOverviewModel
+@{
+    Lijst l = Model.Lijstje;
+}
 
-<h3>@l.Titel</h3>
+<h3>l.Titel</h3>
 
 @foreach (Woord w in l.WoordenLijst)
 {

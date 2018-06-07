@@ -1,18 +1,35 @@
-﻿@{
-
-}
-@using Business
+﻿@using Business
 @using DataModellen
 @model SLT_Site.Models.Dashboard.PublicListModel
 
-<h3>@ViewData["User"]</h3>
-<div id="AllLijsten">
-    @foreach (Lijst n in Model.PublicLists)
-    {
-        <text>
-        <a asp-area="" asp-controller="Dashboard" asp-action="ZieLijst" asp-route-id="@n.Titel?@n.Gebruikersnaam">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum </a>
-        </text>
-    }
-</div>
+<head>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/DashboardPublicLists.css")" />
+</head>
+<body>
+    <h3>@ViewData["User"]</h3>
+    <div id="ApprovedLists">
+        <h3>Alle Goedgekeurde Lijsten</h3>
+        <ul>
+            @foreach (Lijst n in Model.ApprovedLists)
+            {
+                <text>
+                <li><a asp-area="" asp-controller="Dashboard" asp-action="ZieLijst" asp-route-id="@n.Titel?@n.Gebruikersnaam">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum </a></li>
+                </text>
+            }
+        </ul>
+    </div>
 
+
+    <div id="PublicLists">
+        <h3>Alle Openbare Lijsten</h3>
+        <ul>
+            @foreach (Lijst n in Model.PublicLists)
+            {
+                <text>
+                <li><a asp-area="" asp-controller="Dashboard" asp-action="ZieLijst" asp-route-id="@n.Titel?@n.Gebruikersnaam">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum </a></li>
+                </text>
+            }
+        </ul>
+    </div>
+</body>
 

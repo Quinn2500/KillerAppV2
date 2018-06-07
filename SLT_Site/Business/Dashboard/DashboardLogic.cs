@@ -13,7 +13,7 @@ namespace Business.Dashboard
         public List<string> ListNames(string username)
         {
             List<string> namen = new List<string>();
-            foreach (DataRow dr in db.GetAllLijsten(username).Rows)
+            foreach (DataRow dr in db.GetListFromUser(username).Rows)
             {
                 namen.Add(dr[4].ToString());
             }

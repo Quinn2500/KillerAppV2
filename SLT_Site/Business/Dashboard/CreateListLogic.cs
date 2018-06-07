@@ -36,5 +36,17 @@ namespace Business.Dashboard
             db.InsertLijst(l);
             return l;
         }
+
+        public string CheckIfTitelExists(string titel)
+        {
+            if (db.CheckIfTitelExists(titel) == 1)
+            {
+                return "Helaas deze titel bestaat al, kies een andere!";
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

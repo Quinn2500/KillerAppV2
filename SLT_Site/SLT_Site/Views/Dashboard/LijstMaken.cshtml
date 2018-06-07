@@ -33,27 +33,38 @@
             } else {
                 woordjesAntwoordjesString += "/FlashCards";
             }
-            var url = '@Url.Action("LijstOverzicht", "Dashboard", new { id = "__id__" })';
-            window.location.href = url.replace('__id__', woordjesAntwoordjesString);
+            var url1 = '@Url.Action("CheckTitel", "Dashboard", new { id = "__id__" })';           
+            $.ajax({
+                type: "GET",
+                url: url1.replace('__id__', $('#LijstTitel').val()),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    if (data == null) {
+                        var url = '@Url.Action("LijstOverzicht", "Dashboard", new { id = "__id__" })';
+                        window.location.href = url.replace('__id__', woordjesAntwoordjesString);
+                    } else {
+                        $("#ErrorMessage").text(data);
+                    }
+                },
+            });
         });
     });
 
     function UpSize() {
-        document.getElementsByClassName("Row").css("width", function() {
+        document.getElementsByClassName("Row").css("width", function () {
             return that.checked ? "200px" : "";
 
             //afmaken
         });
     }
 
-    function RemoveRow(currElement)
-    {
+    function RemoveRow(currElement) {
         var parentRowIndex = currElement.parentNode.parentNode.rowIndex;
         document.getElementById("WoordenTabel").deleteRow(parentRowIndex);
     }
 
-    function InsRow(n)
-    {
+    function InsRow(n) {
         var tr = n.parentNode.parentNode.cloneNode(true);
         document.getElementById('WoordenTabel').appendChild(tr);
     }
@@ -62,23 +73,24 @@
 <div id="TitelBox">
     <h2>De Lijst Titel:</h2>
     <input type="text" value="De Titel" name="txtboxTitel" id="LijstTitel" />
+    <p id="ErrorMessage"></p>
 </div>
 
 
 <table id="WoordenTabel">
     <tbody>
     <tr>
-        <th>Woordje</th>
-        <th>Antwoordje</th>
+        <th>Woord</th>
+        <th>Betekenis</th>
     </tr>
     @for (int i = 0; i < 10; i++)
     {
         <tr class="Row">
             <td>
-                <input type="text" name="Woord" class="woordje"/>
+                <input type="text" name="Woord" onclick="UpSize"/>
             </td>
             <td>
-                <input type="text" name="Betekenis" class="antwoord" />
+                <input type="text" name="Betekenis" onclick="UpSize"/>
             </td>
             <td>
                 <input type="button" onclick="RemoveRow(this)" value="-" />

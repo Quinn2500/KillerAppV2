@@ -95,7 +95,7 @@ namespace DAL
             MySqlCommand cmd = new MySqlCommand("AddUser", mConn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@Username", MySqlDbType.VarChar).Value = username;
-            cmd.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
+            cmd.Parameters.Add("@Passw", MySqlDbType.VarChar).Value = password;
             cmd.Parameters.Add("@FirstName", MySqlDbType.VarChar).Value = firstname;
             cmd.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = lastname;
             cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = email;
@@ -115,7 +115,7 @@ namespace DAL
 
         }
 
-        public DataTable GetAllLijsten(string username)
+        public DataTable GetListFromUser(string username)
         {
             MySqlParameter p = new MySqlParameter("@Username", username);
             return Select("SELECT * FROM `lijst` WHERE lijst.Gebruikersnaam = @Username", p);
@@ -227,7 +227,22 @@ namespace DAL
             {
                 new MySqlParameter("@ID", id),
             };
-            SqlCommand("UPDATE lijst SET lijst.Openbbaar = 0 WHERE lijst.ID = @ID", p);
+            SqlCommand("UPDATE lijst SET lijst.Openbaar = 0 WHERE lijst.ID = @ID", p);
+        }
+
+        public int CheckIfTitelExists(string titel)
+        {
+            List<MySqlParameter> p = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@Titel", titel),
+            };
+            return Convert.ToInt32(Read("SELECT COUNT(lijst.Naam) FROM `lijst` WHERE lijst.Naam = @Titel", p));
+        }
+
+        public DataTable GetApprovedLijsten(string username)
+        {
+            MySqlParameter p = new MySqlParameter("@Username", username);
+            return Select("SELECT * FROM `lijst` WHERE lijst.Goedkgekeurd = 1 && lijst.Gebruikersnaam != @Username", p);
         }
     }
 }

@@ -6,9 +6,8 @@ using DataModellen;
 
 namespace SLT_Site.Models.Dashboard
 {
-    public class PublicListModel
+    public class ListOverviewModel
     {
-        public List<Lijst> PublicLists = new List<Lijst>();
-        public List<Lijst> ApprovedLists = new List<Lijst>();
+       public Lijst Lijstje = new Lijst();
     }
 }

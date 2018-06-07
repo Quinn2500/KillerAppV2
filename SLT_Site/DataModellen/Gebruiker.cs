@@ -6,7 +6,9 @@ namespace DataModellen
 {
     public class Gebruiker : User
     {
-        private bool mIsAdmin = false;
-        public bool IsAdmin { get { return mIsAdmin; } }
+        public Gebruiker() : base(false)
+        {
+
+        }
     }
 }

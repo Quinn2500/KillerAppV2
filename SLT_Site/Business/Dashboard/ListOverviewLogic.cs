@@ -32,7 +32,7 @@ namespace Business.Dashboard
                 Gebruikersnaam = data.Rows[0][1].ToString(),
                 isPublic = Convert.ToInt32(data.Rows[0][6]),
                 Soort = data.Rows[0][2].ToString(),
-                Titel = data.Rows[0][4].ToString(),
+                Titel = lijstnaam,
                 WoordenLijst = lijst
 
             };

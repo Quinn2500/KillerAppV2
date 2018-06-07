@@ -1,4 +1,5 @@
-﻿using Business;
+﻿using System.Collections.Generic;
+using Business;
 using Business.Dashboard;
 using DataModellen;
 using Microsoft.AspNetCore.Http;
@@ -30,14 +31,16 @@ namespace SLT_Site.Controllers
         public ActionResult LijstOverzicht(string id)
         {
             CreateListLogic logic = new CreateListLogic();
+            ListOverviewModel model = new ListOverviewModel();
             Lijst l = logic.CreateList(id, HttpContext.Session.GetString("Username"));
-            ViewBag.Lijst = l;
-            return View();
+            model.Lijstje = l;
+            return View(model);
         }
 
         [HttpGet]
         public ActionResult ZieLijst(string id)
         {
+            ListOverviewModel model = new ListOverviewModel();
             ListOverviewLogic logic = new ListOverviewLogic();
             if (id.Contains("?"))
             {
@@ -45,14 +48,14 @@ namespace SLT_Site.Controllers
                 string user = t[1];
                 id = t[0];
                 Lijst l = logic.GiveList(id, user);
-                ViewBag.List = l;
+                model.Lijstje = l;
             }
             else
             {
                 Lijst l = logic.GiveList(id, HttpContext.Session.GetString("Username"));
-                ViewBag.List = l;
+                model.Lijstje = l;
             }
-            return View();
+            return View(model);
         }
 
         [HttpGet]
@@ -61,6 +64,7 @@ namespace SLT_Site.Controllers
             PublicListLogic logic = new PublicListLogic();
             PublicListModel model = new PublicListModel();
             model.PublicLists = logic.GetAllPublicLists(HttpContext.Session.GetString("Username"));
+            model.ApprovedLists = logic.GetAllApprovedLists(HttpContext.Session.GetString("Username"));
             return View(model);
         }
 
@@ -77,6 +81,12 @@ namespace SLT_Site.Controllers
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Index","Home");
+        }
+
+        public JsonResult CheckTitel(string id)
+        {
+            CreateListLogic logic = new CreateListLogic();
+            return new JsonResult(logic.CheckIfTitelExists(id));     
         }
     }
 }

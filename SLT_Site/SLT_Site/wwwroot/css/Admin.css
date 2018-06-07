@@ -1,4 +1,8 @@
-﻿.order {
+﻿ul {
+    list-style-type: none;
+}
+
+.order {
     height: 10px;
     width: 400px;
 }
