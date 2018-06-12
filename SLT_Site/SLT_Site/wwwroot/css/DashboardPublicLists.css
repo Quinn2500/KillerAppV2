@@ -1,3 +1,9 @@
-﻿ul {
-    list-style-type: none;
+﻿.List {
+    width: 400px;
+}
+
+.BtnDiv {
+    padding-bottom: 2px;
+    border-bottom: 1px solid lightblue;
+    margin-top: 8px;
 }

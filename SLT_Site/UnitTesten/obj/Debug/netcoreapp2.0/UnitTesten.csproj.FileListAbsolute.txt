@@ -1,4 +1,0 @@
-C:\Users\van Veen\source\repos\SLT_Site\UnitTesten\obj\Debug\netcoreapp2.0\UnitTesten.csprojResolveAssemblyReference.cache
-C:\Users\van Veen\source\repos\SLT_Site\UnitTesten\obj\Debug\netcoreapp2.0\UnitTesten.csproj.CoreCompileInputs.cache
-C:\Users\van Veen\source\repos\SLT_Site\UnitTesten\obj\Debug\netcoreapp2.0\UnitTesten.AssemblyInfoInputs.cache
-C:\Users\van Veen\source\repos\SLT_Site\UnitTesten\obj\Debug\netcoreapp2.0\UnitTesten.AssemblyInfo.cs

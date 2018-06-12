@@ -3,33 +3,32 @@
 @model SLT_Site.Models.Dashboard.PublicListModel
 
 <head>
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/DashboardPublicLists.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/DashboardPublicLijst.css")" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
     <h3>@ViewData["User"]</h3>
-    <div id="ApprovedLists">
+    <div class="List">
         <h3>Alle Goedgekeurde Lijsten</h3>
-        <ul>
             @foreach (Lijst n in Model.ApprovedLists)
             {
                 <text>
-                <li><a asp-area="" asp-controller="Dashboard" asp-action="ZieLijst" asp-route-id="@n.Titel?@n.Gebruikersnaam">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum </a></li>
+                    <div class="BtnDiv">
+                        <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("ZieLijst", "Dashboard", new {id = n.Titel + "?" + n.Gebruikersnaam})'">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum</button>
+                    </div>
                 </text>
             }
-        </ul>
     </div>
-
-
-    <div id="PublicLists">
+    <div class="List">
         <h3>Alle Openbare Lijsten</h3>
-        <ul>
             @foreach (Lijst n in Model.PublicLists)
             {
                 <text>
-                <li><a asp-area="" asp-controller="Dashboard" asp-action="ZieLijst" asp-route-id="@n.Titel?@n.Gebruikersnaam">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum </a></li>
+                    <div class="BtnDiv">
+                        <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("ZieLijst", "Dashboard", new {id = n.Titel + "?" + n.Gebruikersnaam})'">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum</button>
+                    </div>
                 </text>
             }
-        </ul>
     </div>
 </body>
 

@@ -1,8 +1,4 @@
-﻿ul {
-    list-style-type: none;
-}
-
-.order {
-    height: 10px;
-    width: 400px;
+﻿#AlleLijsten {
+    margin-top: 10px;
+    width: 800px;
 }

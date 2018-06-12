@@ -13,14 +13,15 @@
             var woordjesAntwoordjesString = "";
             woordjesAntwoordjesString += $('#LijstTitel').val() + "/";
             $('#WoordenTabel tr').each(function() {
-                if ($(this).hasClass("Row")) {
-                    if ($(this).find(".woordje").val() != "" && $(this).find(".antwoord").val() != "") {
-
-                        woordjesAntwoordjesString += $(this).find(".woordje").val() +
+                if ($(this).hasClass("Rij")) {
+                    if ($(this).find(".Woord").val() != "" && $(this).find(".Betekenis").val() != "") {
+                        woordjesAntwoordjesString += $(this).find(".Woord").val() +
                             "-" +
-                            $(this).find(".antwoord").val() +
+                            $(this).find(".Betekenis").val() +
                             "|";
                     }
+                } else {
+                    console.log($('#WoordenTabel tr'));
                 }
             });
             if (document.getElementById('checkbox_Openbaar').checked) {
@@ -33,7 +34,8 @@
             } else {
                 woordjesAntwoordjesString += "/FlashCards";
             }
-            var url1 = '@Url.Action("CheckTitel", "Dashboard", new { id = "__id__" })';           
+            var url1 = '@Url.Action("CheckTitel", "Dashboard", new { id = "__id__" })';
+            console.log(woordjesAntwoordjesString);
             $.ajax({
                 type: "GET",
                 url: url1.replace('__id__', $('#LijstTitel').val()),
@@ -46,7 +48,7 @@
                     } else {
                         $("#ErrorMessage").text(data);
                     }
-                },
+                }
             });
         });
     });
@@ -85,12 +87,12 @@
     </tr>
     @for (int i = 0; i < 10; i++)
     {
-        <tr class="Row">
+        <tr class="Rij">
             <td>
-                <input type="text" name="Woord" onclick="UpSize"/>
+                <input type="text" name="Woord" onclick="UpSize" class="Woord"/>
             </td>
             <td>
-                <input type="text" name="Betekenis" onclick="UpSize"/>
+                <input type="text" name="Betekenis" onclick="UpSize" class="Betekenis"/>
             </td>
             <td>
                 <input type="button" onclick="RemoveRow(this)" value="-" />

@@ -5,7 +5,7 @@ namespace DataModellen
 {
     public class Lijst
     {
-        public string Gebruikersnaam;
+        public string Gebruikersnaam { get; set; }
         public string Soort;
         public string Datum;
         public int isPublic;

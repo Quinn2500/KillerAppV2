@@ -7,7 +7,7 @@ namespace Business.Login
 {
     public class AccountLogic
     {
-        DataBaseCalls db = new DataBaseCalls();
+        LoginDatabaseCalls db = new LoginDatabaseCalls();
 
         public void RegisterUser(Gebruiker user)
         {
@@ -16,7 +16,7 @@ namespace Business.Login
 
         public void RegisterAdmin(Admin user)
         {
-            db.CreateAccount(user.Username, user.Password, user.Email, user.FirstName, user.LastName, user.IsAdmin);
+            db.CreateAccount(user.Username, Security.CreateHash(user.Password), user.Email, user.FirstName, user.LastName, user.IsAdmin);
         }
 
         public string CheckIfUserExitst(string username)

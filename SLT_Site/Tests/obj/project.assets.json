@@ -6102,6 +6102,7 @@
     ".NETCoreApp,Version=v2.0": [
       "Business >= 1.0.0",
       "DAL >= 1.0.0",
+      "DataModellen >= 1.0.0",
       "MSTest.TestAdapter >= 1.2.0",
       "MSTest.TestFramework >= 1.2.0",
       "Microsoft.NET.Test.Sdk >= 15.5.0",
@@ -6118,11 +6119,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\UnitTesten\\UnitTesten.csproj",
-      "projectName": "UnitTesten",
-      "projectPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\UnitTesten\\UnitTesten.csproj",
+      "projectUniqueName": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\Tests\\Tests.csproj",
+      "projectName": "Tests",
+      "projectPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\Tests\\Tests.csproj",
       "packagesPath": "C:\\Users\\van Veen\\.nuget\\packages\\",
-      "outputPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\UnitTesten\\obj\\",
+      "outputPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6143,6 +6144,9 @@
           "projectReferences": {
             "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\DAL\\DAL.csproj": {
               "projectPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\DAL\\DAL.csproj"
+            },
+            "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\DataModellen\\DataModellen.csproj": {
+              "projectPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\DataModellen\\DataModellen.csproj"
             },
             "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\Business\\Business.csproj": {
               "projectPath": "D:\\GitKraken\\Repos\\KillerAppV2\\SLT_Site\\Business\\Business.csproj"

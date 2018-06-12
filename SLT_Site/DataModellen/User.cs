@@ -6,23 +6,21 @@ namespace DataModellen
 {
     public abstract class User
     {
-        private string mUsername;
-        private string mPassword;
-        private string mFirstName;
-        private string mLastName;
-        private string mEmail;
-        private bool mIsAdmin;
+        public string Username { get; set; }
 
-        public string Username{ get { return mUsername; } set { mUsername = value; }}
-        public string Password { get { return mPassword; } set { mPassword = value; } }
-        public string FirstName { get { return mFirstName; } set { mFirstName = value; } }
-        public string LastName { get { return mLastName; } set { mLastName = value; } }
-        public string Email { get { return mEmail; } set { mEmail = value; } }
-        public bool IsAdmin{get { return mIsAdmin; }}
+        public string Password { get; set; }
 
-        public User(bool isadmin)
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Email { get; set; }
+
+        public bool IsAdmin { get; }
+
+        protected User(bool isadmin)
         {
-            mIsAdmin = isadmin;
+            IsAdmin = isadmin;
         }
 
     }

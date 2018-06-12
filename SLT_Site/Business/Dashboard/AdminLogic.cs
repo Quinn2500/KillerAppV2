@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DataModellen;
 using DAL;
 
 namespace Business.Dashboard
 {
     public class AdminLogic
     {
-        DataBaseCalls db = new DataBaseCalls();
+        AdminDatabaseCalls db = new AdminDatabaseCalls();
         public void Approve(string ListName, string ListUser)
         {
             db.ApproveList(db.GetLijstID(ListUser, ListName));

@@ -8,7 +8,7 @@ namespace Business.Dashboard
 {
     public class CreateListLogic
     {
-        DataBaseCalls db = new DataBaseCalls();
+        DashboardDatabaseCalls db = new DashboardDatabaseCalls();
         private List<Woord> lijst = new List<Woord>();
 
         public Lijst CreateList(string s, string username)

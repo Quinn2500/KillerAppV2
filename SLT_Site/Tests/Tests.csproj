@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\DAL\DAL.csproj" />
+    <ProjectReference Include="..\DataModellen\DataModellen.csproj" />
   </ItemGroup>
 
 </Project>

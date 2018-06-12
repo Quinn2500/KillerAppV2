@@ -4,7 +4,7 @@ namespace Business.Login
 {
     public class LoginLogic
     {
-        DataBaseCalls db = new DataBaseCalls();
+        LoginDatabaseCalls db = new LoginDatabaseCalls();
 
         public string Connectie()
         {

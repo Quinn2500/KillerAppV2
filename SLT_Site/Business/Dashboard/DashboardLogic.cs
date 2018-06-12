@@ -8,7 +8,7 @@ namespace Business.Dashboard
 {
     public class DashboardLogic
     {
-        DataBaseCalls db = new DataBaseCalls();
+        DashboardDatabaseCalls db = new DashboardDatabaseCalls();
 
         public List<string> ListNames(string username)
         {

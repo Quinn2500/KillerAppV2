@@ -2,11 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+	<EnableDefaultContentItems>false</EnableDefaultContentItems>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="wwwroot\css\DashboardPublicLists.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\css\DashboardIndex.css" />
-    <Content Include="wwwroot\css\DashboardPublicLists.css" />
+    <Content Include="wwwroot\css\DashboardPublicLijst.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +34,11 @@
     <Folder Include="Views\Overhoring\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\AdminPublicLists.css" />
+    <None Include="wwwroot\css\DashboardPublicLijst.css" />
   </ItemGroup>
 
 </Project>

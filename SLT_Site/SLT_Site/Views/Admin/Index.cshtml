@@ -2,6 +2,12 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
 }
+<head>
 
+</head>
+<body>
+<h3>Welkom Admin @ViewData["Username"]!</h3>
 
-<h3>Welkom Admin!</h3>
+<button onclick="window.location.href = '@Url.Action("CreateAdmin", "Admin")'">Klik hier om een admin toe te voegen!</button>
+    @TempData["Succes"]
+</body>

@@ -9,7 +9,7 @@ namespace Business.Dashboard
 {
     public class ListOverviewLogic
     {
-        DataBaseCalls db = new DataBaseCalls();
+        DashboardDatabaseCalls db = new DashboardDatabaseCalls();
 
         public Lijst GiveList(string lijstnaam, string username)
         {
