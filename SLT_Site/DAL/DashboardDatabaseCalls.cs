@@ -97,13 +97,14 @@ namespace DAL
             SqlCommand("DELETE FROM lijst WHERE lijst.ID = @ID", p);
         }
 
-        public int CheckIfTitelExists(string titel)
+        public int CheckIfTitelExists(string titel,string username)
         {
             List<MySqlParameter> p = new List<MySqlParameter>()
             {
                 new MySqlParameter("@Titel", titel),
+                new MySqlParameter("@Username", username)
             };
-            return Convert.ToInt32(Read("SELECT COUNT(lijst.Naam) FROM `lijst` WHERE lijst.Naam = @Titel", p));
+            return Convert.ToInt32(Read("SELECT COUNT(lijst.Naam) FROM `lijst` WHERE lijst.Naam = @Titel  && lijst.Gebruikersnaam = @Username", p));
         }
 
         public DataTable GetApprovedLijsten(string username)

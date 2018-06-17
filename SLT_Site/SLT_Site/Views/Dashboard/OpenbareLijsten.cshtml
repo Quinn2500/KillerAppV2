@@ -2,34 +2,34 @@
 @model SLT_Site.Models.Dashboard.PublicListModel
 
 <head>
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/DashboardPublicLijst.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/DashboardPublicList.css")" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-    <h3>@ViewData["User"]</h3>
-    <div class="List">
-        <h3>Alle Goedgekeurde Lijsten</h3>
-            @foreach (Lijst n in Model.ApprovedLists)
-            {
-                <text>
-                    <div class="BtnDiv">
-                        <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("ZieLijst", "Dashboard", new {id = n.Titel + "?" + n.Gebruikersnaam})'">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum</button>
-                        <button class="btn btn-info" onclick="window.location.href = '@Url.Action("OptieMenu", "Overhoring", new {id = n.Gebruikersnaam +"?"+ n.Titel})'">Overhoren</button>
-                    </div>
-                </text>
-            }
-    </div>
-    <div class="List">
-        <h3>Alle Openbare Lijsten</h3>
-            @foreach (Lijst n in Model.PublicLists)
-            {
-                <text>
-                    <div class="BtnDiv">
-                        <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("ZieLijst", "Dashboard", new {id = n.Titel + "?" + n.Gebruikersnaam})'">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum</button>
-                        <button class="btn btn-info" onclick="window.location.href = '@Url.Action("OptieMenu", "Overhoring", new {id = n.Titel + "?" + n.Gebruikersnaam}))'">Overhoren</button>
-                    </div>
-                </text>
-            }
-    </div>
+<h3>@ViewData["User"]</h3>
+<div class="List">
+    <h3>Alle Goedgekeurde Lijsten</h3>
+    @foreach (Lijst n in Model.ApprovedLists)
+    {
+        <text>
+            <div class="BtnDiv">
+                <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("ZieLijst", "Dashboard", new {id = n.Titel + "?" + n.Gebruikersnaam})'">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum</button>
+                <button class="btn btn-info" onclick="window.location.href = '@Url.Action("OptieMenu", "Overhoring", new {id = n.Gebruikersnaam +"$"+ n.Titel})'">Overhoren</button>
+            </div>
+        </text>
+    }
+</div>
+<div class="List">
+    <h3>Alle Openbare Lijsten</h3>
+    @foreach (Lijst n in Model.PublicLists)
+    {
+        <text>
+            <div class="BtnDiv">
+                <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("ZieLijst", "Dashboard", new {id = n.Titel + "?" + n.Gebruikersnaam})'">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum</button>
+                <button class="btn btn-info" onclick="window.location.href = '@Url.Action("OptieMenu", "Overhoring", new {id = n.Gebruikersnaam +"$"+ n.Titel})'">Overhoren</button>
+            </div>
+        </text>
+    }
+</div>
 </body>
 

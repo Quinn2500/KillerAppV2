@@ -86,8 +86,8 @@ namespace SLT_Site.Controllers
 
         public JsonResult CheckTitel(string id)
         {
-            CreateListLogic logic = new CreateListLogic();
-            return new JsonResult(logic.CheckIfTitelExists(id));     
+            CreateListLogic logic = new CreateListLogic();         
+            return new JsonResult(logic.CheckIfTitelExists(id, HttpContext.Session.GetString("Username")));     
         }
     }
 }

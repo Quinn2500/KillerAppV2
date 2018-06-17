@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <Content Include="wwwroot\css\DashboardIndex.css" />
-    <Content Include="wwwroot\css\DashboardPublicLijst.css" />
+    <Content Include="wwwroot\css\DashboardPublicList.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +41,7 @@
   <ItemGroup>
     <None Include="wwwroot\css\AdminPublicLists.css" />
     <None Include="wwwroot\css\DashboardPublicLijst.css" />
+    <None Include="wwwroot\css\DashboardPublicList.css" />
   </ItemGroup>
 
 </Project>

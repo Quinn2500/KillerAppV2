@@ -23,9 +23,9 @@ namespace SLT_Site.Controllers
         {
             OverhoringLogic logic = new OverhoringLogic();
             StartOverhoringModel model = new StartOverhoringModel();
-            if (id.Contains("?"))
+            if (id.Contains("$"))
             {               
-                model.Overhoring = logic.Start(id.Split("?")[1], id.Split("?")[0]);
+                model.Overhoring = logic.Start(id.Split("$")[1], id.Split("$")[0]);
             }
             else
             {

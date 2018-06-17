@@ -36,9 +36,9 @@ namespace Business.Dashboard
             return l;
         }
 
-        public string CheckIfTitelExists(string titel)
+        public string CheckIfTitelExists(string titel, string username)
         {
-            if (db.CheckIfTitelExists(titel) == 1)
+            if (db.CheckIfTitelExists(titel, username) == 1)
             {
                 return "Helaas deze titel bestaat al, kies een andere!";
             }
