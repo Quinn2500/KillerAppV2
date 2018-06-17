@@ -1,6 +1,4 @@
-﻿using System;
-using Business.Login;
-using DataModellen;
+﻿using DataModellen;
 using DAL;
 
 namespace Business.Login

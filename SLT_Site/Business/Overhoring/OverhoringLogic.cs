@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Business.Dashboard;
+﻿using Business.Dashboard;
 
 namespace Business.Overhoring
 {
@@ -11,23 +8,23 @@ namespace Business.Overhoring
         {
             ListOverviewLogic getLijst = new ListOverviewLogic();
             DataModellen.Overhoring overhoring = new DataModellen.Overhoring();
-            string[] OptieString = id.Split('%');
-            string LijstNaam = OptieString[0];
-            overhoring.WoordenLijst = getLijst.GiveList(LijstNaam, username).WoordenLijst;
-            string[] Opties = OptieString[1].Split('|');
-            overhoring.Vraag = Opties[0].Split('?')[0].Split('=')[1];
-            overhoring.Soort = Opties[1].Split('=')[1];
-            bool Random;
-            if (Opties[2].Split('=')[1] == "RandomVologorde")
+            string[] optieString = id.Split('%');
+            string lijstNaam = optieString[0];
+            overhoring.WoordenLijst = getLijst.GiveList(lijstNaam, username).WoordenLijst;
+            string[] opties = optieString[1].Split('|');
+            overhoring.Vraag = opties[0].Split('?')[0].Split('=')[1];
+            overhoring.Soort = opties[1].Split('=')[1];
+            bool random;
+            if (opties[2].Split('=')[1] == "RandomVologorde")
             {
-                Random = true;
+                random = true;
             }
             else
             {
-                Random = false;
+                random = false;
             }
 
-            overhoring.Random = Random;
+            overhoring.Random = random;
             return overhoring;
         }
     }

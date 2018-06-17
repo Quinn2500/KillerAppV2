@@ -5,11 +5,25 @@
 }
 
 <h3>@l.Titel</h3>
-
-@foreach (Woord w in l.WoordenLijst)
-{
-    @:<p>@w.Begrip - @w.Betekenis</p>
-}
+<table id="WoordenTabel">
+    <tbody>
+    <tr>
+        <th>Woord</th>
+        <th>Betekenis</th>
+    </tr>
+    @foreach (Woord w in l.WoordenLijst)
+    {
+        <tr class="Row">
+            <td>
+                <input type="text" name="Woord" value="@w.Begrip"/>
+            </td>
+            <td>
+                <input type="text" name="Betekenis" value="@w.Betekenis"/>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
 
 
 

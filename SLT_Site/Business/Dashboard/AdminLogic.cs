@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DataModellen;
-using DAL;
+﻿using DAL;
 
 namespace Business.Dashboard
 {
     public class AdminLogic
     {
         AdminDatabaseCalls db = new AdminDatabaseCalls();
-        public void Approve(string ListName, string ListUser)
+        public void Approve(string listName, string listUser)
         {
-            db.ApproveList(db.GetLijstID(ListUser, ListName));
+            db.ApproveList(db.GetLijstID(listUser, listName));
         }
 
-        public void RemovePublic(string ListName, string ListUser)
+        public void RemovePublic(string listName, string listUser)
         {
-            db.RemovePublic(db.GetLijstID(ListUser, ListName));
+            db.RemovePublic(db.GetLijstID(listUser, listName));
         }
     }
 }

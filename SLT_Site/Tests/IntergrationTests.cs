@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Business.Dashboard;
+﻿using Business.Dashboard;
 using Business.Login;
 using Business.Overhoring;
 using DataModellen;
@@ -79,15 +76,15 @@ namespace Tests
         [TestMethod]
         public void DashboardLogic()
         {
-            CreateListLogic CreateListLogic = new CreateListLogic();
-            ListOverviewLogic ListOverviewLogic = new ListOverviewLogic();
-            PublicListLogic PublicListlogic = new PublicListLogic();
+            CreateListLogic createListLogic = new CreateListLogic();
+            ListOverviewLogic listOverviewLogic = new ListOverviewLogic();
+            PublicListLogic publicListlogic = new PublicListLogic();
             CreateUser();
             Makelist();
-            Assert.IsNotNull(CreateListLogic.CreateList("De Titel/Woordje1-Woordje2|Gras-Groen|?isPublic=false/Woordjes", "Quinn2500"));
-            Assert.IsNotNull(ListOverviewLogic.GiveList("De Titel", "Quinn2500"), "Kan lijst niet ophalen");
-            Assert.IsNotNull(PublicListlogic.GetAllPublicLists("Quinn"), "Kan lijsten niet ophalen");
-            Assert.IsNotNull(PublicListlogic.GetAllApprovedLists("Quinn"), "Kan lijsten niet ophalen");
+            Assert.IsNotNull(createListLogic.CreateList("De Titel/Woordje1-Woordje2|Gras-Groen|?isPublic=false/Woordjes", "Quinn2500"),"Lijst niet aangemaakt");
+            Assert.IsNotNull(listOverviewLogic.GiveList("De Titel", "Quinn2500"), "Kan lijst niet ophalen");
+            Assert.IsNotNull(publicListlogic.GetAllPublicLists("Quinn"), "Kan lijsten niet ophalen");
+            Assert.IsNotNull(publicListlogic.GetAllApprovedLists("Quinn"), "Kan lijsten niet ophalen");
             db.DeleteUser("Quinn2500");
             DeleteList("De Titel", "Quinn2500");
         }

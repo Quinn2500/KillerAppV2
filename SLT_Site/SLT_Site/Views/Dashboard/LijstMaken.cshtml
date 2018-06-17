@@ -53,14 +53,6 @@
         });
     });
 
-    function UpSize() {
-        document.getElementsByClassName("Row").css("width", function () {
-            return that.checked ? "200px" : "";
-
-            //afmaken
-        });
-    }
-
     function RemoveRow(currElement) {
         var parentRowIndex = currElement.parentNode.parentNode.rowIndex;
         document.getElementById("WoordenTabel").deleteRow(parentRowIndex);
@@ -89,10 +81,10 @@
     {
         <tr class="Rij">
             <td>
-                <input type="text" name="Woord" onclick="UpSize" class="Woord"/>
+                <input type="text" name="Woord" class="Woord"/>
             </td>
             <td>
-                <input type="text" name="Betekenis" onclick="UpSize" class="Betekenis"/>
+                <input type="text" name="Betekenis" class="Betekenis"/>
             </td>
             <td>
                 <input type="button" onclick="RemoveRow(this)" value="-" />

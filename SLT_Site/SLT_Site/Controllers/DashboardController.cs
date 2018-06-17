@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Business;
-using Business.Dashboard;
+﻿using Business.Dashboard;
 using DataModellen;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,13 +8,15 @@ namespace SLT_Site.Controllers
 {
     public class DashboardController : Controller
     {
-        DashboardLogic logic = new DashboardLogic();
+        DashboardLogic mDashboardLogic = new DashboardLogic();
 
         [HttpGet]
         public ActionResult Index()
         {
-            DashboardModel model = new DashboardModel();
-            model.Lijsten = logic.ListNames(HttpContext.Session.GetString("Username"));
+            DashboardModel model = new DashboardModel
+            {
+                Lijsten = mDashboardLogic.ListNames(HttpContext.Session.GetString("Username"))
+            };
             ViewData["User"] = HttpContext.Session.GetString("Username");
             return View(model);
         }
@@ -62,17 +62,18 @@ namespace SLT_Site.Controllers
         public ActionResult OpenbareLijsten()
         {
             PublicListLogic logic = new PublicListLogic();
-            PublicListModel model = new PublicListModel();
-            model.PublicLists = logic.GetAllPublicLists(HttpContext.Session.GetString("Username"));
-            model.ApprovedLists = logic.GetAllApprovedLists(HttpContext.Session.GetString("Username"));
+            PublicListModel model = new PublicListModel
+            {
+                PublicLists = logic.GetAllPublicLists(HttpContext.Session.GetString("Username")),
+                ApprovedLists = logic.GetAllApprovedLists(HttpContext.Session.GetString("Username"))
+            };
             return View(model);
         }
 
         [HttpGet]
         public ActionResult DeleteList(string id)
         {
-            DashboardLogic logic = new DashboardLogic();
-            logic.DeleteList(id, HttpContext.Session.GetString("Username"));
+            mDashboardLogic.DeleteList(id, HttpContext.Session.GetString("Username"));
             return RedirectToAction("Index");
         }
 

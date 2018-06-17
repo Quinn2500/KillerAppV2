@@ -1,10 +1,10 @@
 ﻿@{
     ViewData["Title"] = "OptieMenu";
 }
+@model SLT_Site.Models.Overhoren.OptieMenuModel
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     $( document ).ready(function() {
-        console.log("ready!");
         $(".rbtn_Vologorde").click(function () {
             if (document.getElementById('radio_BegripVraag').checked) {
                 $("#radio_BetekenisAntwoord").prop("checked", true);
@@ -17,25 +17,24 @@
             }
         });
         $("#StartOverhoring").click(function () {
-            var OptieString = "@ViewBag.LijstID"+"%";
+            var optieString = "@Model.Opties"+"%";
             if (document.getElementById('radio_BegripVraag').checked) {
-                OptieString += "Vraag=Begrip?Antwoord=Betekenis|";
+                optieString += "Vraag=Begrip?Antwoord=Betekenis|";
             } else if (document.getElementById('radio_BegripAntwoord').checked) {
-                OptieString += "Vraag=Betekenis?Antwoord=Begrip|";
+                optieString += "Vraag=Betekenis?Antwoord=Begrip|";
             }
 
             if (document.getElementById('radio_Standaard').checked) {
-                OptieString += "Soort=Standaard|";
+                optieString += "Soort=Standaard|";
             }
 
             if (document.getElementById('checkbox_RandomVologorde').checked) {
-                OptieString += "Optie=RandomVologorde|";
+                optieString += "Optie=RandomVologorde|";
             } else {
-                OptieString += "Optie=StandaardVologorde|";
+                optieString += "Optie=StandaardVologorde|";
             }
-            console.log(OptieString);
             var url = '@Url.Action("StartOverhoring", "Overhoring", new { id = "__id__" })';
-            window.location.href = url.replace('__id__', OptieString);
+            window.location.href = url.replace('__id__', optieString);
         });
     });
 </script>

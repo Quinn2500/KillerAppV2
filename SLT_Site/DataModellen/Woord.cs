@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DataModellen
+﻿namespace DataModellen
 {
     public class Woord
     {
-        public string Begrip;
-        public string Betekenis;
+        public string Begrip { get; set; }
+        public string Betekenis { get; set; }
     }
 }

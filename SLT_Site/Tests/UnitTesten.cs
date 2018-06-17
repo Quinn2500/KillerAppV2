@@ -54,7 +54,6 @@ namespace Tests
         [TestMethod]
         public void TestRegister()
         {
-            db.DeleteUser("Quinn2500");
             AccountLogic logic = new AccountLogic();
             logic.RegisterUser(new Gebruiker()
             {
@@ -96,7 +95,7 @@ namespace Tests
         {
             CreateListLogic logic = new CreateListLogic();
             CreateUser();
-            Assert.IsNotNull(logic.CreateList("De Titel/Woordje1-Woordje2|Gras-Groen|?isPublic=false/Woordjes", "Quinn2500"));
+            Assert.IsNotNull(logic.CreateList("De Titel/Woordje1-Woordje2|Gras-Groen|?isPublic=false/Woordjes", "Quinn2500"),"Lijst is niet aangemaakt");
             db.DeleteUser("Quinn2500");
             DeleteList("De Titel", "Quinn2500");
         }

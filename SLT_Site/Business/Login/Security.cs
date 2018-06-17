@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace Business.Login
@@ -8,16 +7,16 @@ namespace Business.Login
     {
         public static string CreateHash(string unHashed)
         {
-            System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
-            byte[] data = System.Text.Encoding.ASCII.GetBytes(unHashed);
+           MD5CryptoServiceProvider x = new MD5CryptoServiceProvider();
+            byte[] data = Encoding.ASCII.GetBytes(unHashed);
             data = x.ComputeHash(data);
-            return System.Text.Encoding.ASCII.GetString(data);
+            return Encoding.ASCII.GetString(data);
         }
 
-        public static bool MatchHash(string HashedPassword, string UnHashesPassword)
+        public static bool MatchHash(string hashedPassword, string unHashedPassword)
         {
-            UnHashesPassword = CreateHash(UnHashesPassword);
-            if (UnHashesPassword == HashedPassword)
+            unHashedPassword = CreateHash(unHashedPassword);
+            if (unHashedPassword == hashedPassword)
             {
                 return true;
             }

@@ -1,0 +1,9 @@
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DataModellen\bin\Release\netcoreapp2.0\DataModellen.deps.json
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DataModellen\bin\Release\netcoreapp2.0\DataModellen.dll
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DataModellen\bin\Release\netcoreapp2.0\DataModellen.pdb
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DataModellen\obj\Release\netcoreapp2.0\DataModellen.csprojResolveAssemblyReference.cache
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DataModellen\obj\Release\netcoreapp2.0\DataModellen.csproj.CoreCompileInputs.cache
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DataModellen\obj\Release\netcoreapp2.0\DataModellen.AssemblyInfoInputs.cache
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DataModellen\obj\Release\netcoreapp2.0\DataModellen.AssemblyInfo.cs
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DataModellen\obj\Release\netcoreapp2.0\DataModellen.dll
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DataModellen\obj\Release\netcoreapp2.0\DataModellen.pdb

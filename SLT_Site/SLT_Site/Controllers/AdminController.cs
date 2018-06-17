@@ -3,9 +3,8 @@ using Business.Login;
 using DataModellen;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MySqlX.XDevAPI;
-using SLT_Site.Models;
 using SLT_Site.Models.Dashboard;
+using SLT_Site.Models.Home;
 
 namespace SLT_Site.Controllers
 {
@@ -22,24 +21,26 @@ namespace SLT_Site.Controllers
         public ActionResult OpenbareLijsten()
         {
             PublicListLogic logic = new PublicListLogic();
-            PublicListModel model = new PublicListModel();
-            model.PublicLists = logic.GetAllPublicLists(HttpContext.Session.GetString("Username"));
+            PublicListModel model = new PublicListModel
+            {
+                PublicLists = logic.GetAllPublicLists(HttpContext.Session.GetString("Username"))
+            };
             return View(model);
         }
 
         [HttpGet]
         public ActionResult ApproveList(string id)
         {
-            string[] StringSplit = id.Split('?');
-            admin.Approve(StringSplit[0],StringSplit[1]);
+            string[] stringSplit = id.Split('?');
+            admin.Approve(stringSplit[0],stringSplit[1]);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public ActionResult RemovePublic(string id)
         {
-            string[] StringSplit = id.Split('?');
-            admin.RemovePublic(StringSplit[0], StringSplit[1]);
+            string[] stringSplit = id.Split('?');
+            admin.RemovePublic(stringSplit[0], stringSplit[1]);
             return RedirectToAction("Index");
         }
 
@@ -54,18 +55,18 @@ namespace SLT_Site.Controllers
         public ActionResult CreateAdmin(AccountModel model)
         {
             AccountLogic ac = new AccountLogic();
-            if (!ModelState.IsValid || ac.CheckIfUserExitst(model.username) != null)
+            if (!ModelState.IsValid || ac.CheckIfUserExitst(model.Username) != null)
             {
-                ViewData["Bericht"] = ac.CheckIfUserExitst(model.username);
+                ViewData["Bericht"] = ac.CheckIfUserExitst(model.Username);
                 return View(model);
             }
             Admin user = new Admin()
             {
-                Username = model.username,
-                Email = model.email,
-                FirstName = model.fname,
-                LastName = model.lname,
-                Password = model.password
+                Username = model.Username,
+                Email = model.Email,
+                FirstName = model.Fname,
+                LastName = model.Lname,
+                Password = model.Password
             };
             ac.RegisterAdmin(user);
             TempData["Succes"] = "Uw account is succesvol aangemaakt.";

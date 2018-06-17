@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Business.Overhoring;
 using DataModellen;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SLT_Site.Models.Overhoren;
 
 namespace SLT_Site.Controllers
 {
@@ -14,25 +12,36 @@ namespace SLT_Site.Controllers
     {
         public ActionResult OptieMenu(string id)
         {
-            ViewBag.LijstID = id;
-            return View();
+            OptieMenuModel model = new OptieMenuModel
+            {
+                Opties = id
+            };
+            return View(model);
         }
 
         public ActionResult StartOverhoring(string id)
         {
             OverhoringLogic logic = new OverhoringLogic();
-            ViewBag.Overhoring = logic.Start(id, HttpContext.Session.GetString("Username"));
-            List<string[]> test = new List<string[]>();
-            foreach (Woord w in logic.Start(id, HttpContext.Session.GetString("Username")).WoordenLijst)
+            StartOverhoringModel model = new StartOverhoringModel();
+            if (id.Contains("?"))
+            {               
+                model.Overhoring = logic.Start(id.Split("?")[1], id.Split("?")[0]);
+            }
+            else
+            {
+                model.Overhoring = logic.Start(id, HttpContext.Session.GetString("Username"));
+            }
+            List<string[]> toJsonList = new List<string[]>();
+            foreach (Woord w in model.Overhoring.WoordenLijst)
             {
                 string[] s = new string[2];
                 s[0] = w.Begrip;
                 s[1] = w.Betekenis;
-                test.Add(s);
+                toJsonList.Add(s);
             }
+            model.Jsonstring = JsonConvert.SerializeObject(toJsonList);
+            return View(model);
 
-            ViewBag.Test = JsonConvert.SerializeObject(test);
-            return View();
         }
     }
 }

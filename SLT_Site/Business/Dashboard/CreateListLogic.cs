@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using DataModellen;
 using DAL;
 
@@ -32,7 +31,7 @@ namespace Business.Dashboard
                     lijst.Add(k);
                 }
             }
-            Lijst l = new Lijst{ Gebruikersnaam = username, Datum = String.Format("{0:dd/MM/yyyy}", DateTime.Today), isPublic = isPublic, Soort = soort, Titel = titel, WoordenLijst = lijst };
+            Lijst l = new Lijst{ Gebruikersnaam = username, Datum = String.Format("{0:dd/MM/yyyy}", DateTime.Today), IsPublic = isPublic, Soort = soort, Titel = titel, WoordenLijst = lijst };
             db.InsertLijst(l);
             return l;
         }

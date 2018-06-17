@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 using DataModellen;
 using MySql.Data.MySqlClient;
 
@@ -45,34 +44,34 @@ namespace DAL
         public void InsertLijst(Lijst l)
         {
             Conn.Open();
-            List<MySqlParameter> LijstParameter = new List<MySqlParameter>()
+            List<MySqlParameter> lijstParameter = new List<MySqlParameter>()
             {
                 new MySqlParameter("@Username", l.Gebruikersnaam),
                 new MySqlParameter("@Soort", l.Soort),
                 new MySqlParameter("@Date", l.Datum),
                 new MySqlParameter("@Titel", l.Titel),
-                new MySqlParameter("@IsPublic", l.isPublic)
+                new MySqlParameter("@IsPublic", l.IsPublic)
             };
-            Command("INSERT INTO lijst(Gebruikersnaam, Soort, Datum, Naam, Openbaar) VALUES (@Username, @Soort, @Date,@Titel, @IsPublic)", LijstParameter);
+            Command("INSERT INTO lijst(Gebruikersnaam, Soort, Datum, Naam, Openbaar) VALUES (@Username, @Soort, @Date,@Titel, @IsPublic)", lijstParameter);
             int cijfer = LastID();
             Conn.Close();
             foreach (Woord w in l.WoordenLijst)
             {
-                List<MySqlParameter> WoordParameter = new List<MySqlParameter>()
+                List<MySqlParameter> woordParameter = new List<MySqlParameter>()
                 {
                     new MySqlParameter("@Begrip", w.Begrip),
                     new MySqlParameter("@Betekenis", w.Betekenis)
                 };
                 Conn.Open();
-                Command("INSERT INTO woorden(Woord, Betekenis) VALUES (@Begrip, @Betekenis)", WoordParameter);
+                Command("INSERT INTO woorden(Woord, Betekenis) VALUES (@Begrip, @Betekenis)", woordParameter);
                 int nummer = LastID();
                 Conn.Close();
-                List<MySqlParameter> KoppelParameter = new List<MySqlParameter>()
+                List<MySqlParameter> koppelParameter = new List<MySqlParameter>()
                 {
                     new MySqlParameter("@Nummer", nummer),
                     new MySqlParameter("@Cijfer", cijfer)
                 };
-                SqlCommand("INSERT INTO woordtolijst(WoordID, LijstID) VALUES (@Nummer, @Cijfer)", KoppelParameter);
+                SqlCommand("INSERT INTO woordtolijst(WoordID, LijstID) VALUES (@Nummer, @Cijfer)", koppelParameter);
             }
             Conn.Close();
         }

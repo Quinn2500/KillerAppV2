@@ -2,7 +2,7 @@
 using DataModellen;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SLT_Site.Models;
+using SLT_Site.Models.Home;
 
 namespace SLT_Site.Controllers
 {
@@ -16,7 +16,7 @@ namespace SLT_Site.Controllers
                 LoginLogic loginLogic = new LoginLogic();
                 if (loginLogic.Connectie() != null)
                 {
-                    return StatusCode(404, loginLogic.Connectie());
+                    return StatusCode(403, loginLogic.Connectie());
                 }
                 IndexModel model = new IndexModel();
                 ViewData["Message"] = TempData["Succes"];
@@ -38,10 +38,10 @@ namespace SLT_Site.Controllers
             else
             {
                 LoginLogic loginLogic = new LoginLogic();
-                if (loginLogic.Login(model.username, model.password) != null)
+                if (loginLogic.Login(model.Username, model.Password) != null)
                 {
-                    HttpContext.Session.SetString("Username", model.username);
-                    if (loginLogic.CheckIfAdmin(model.username))
+                    HttpContext.Session.SetString("Username", model.Username);
+                    if (loginLogic.CheckIfAdmin(model.Username))
                     {
                         return RedirectToAction("Index", "Admin");
                     }
@@ -69,18 +69,18 @@ namespace SLT_Site.Controllers
         public ActionResult Account(AccountModel model)
         {
             AccountLogic ac = new AccountLogic();
-            if (!ModelState.IsValid || ac.CheckIfUserExitst(model.username) != null)
+            if (!ModelState.IsValid || ac.CheckIfUserExitst(model.Username) != null)
             {
-                ViewData["Bericht"]= ac.CheckIfUserExitst(model.username);
+                ViewData["Bericht"]= ac.CheckIfUserExitst(model.Username);
                 return View(model);
             }
             Gebruiker user = new Gebruiker()
             {
-                Username = model.username,
-                Email = model.email,
-                FirstName = model.fname,
-                LastName = model.lname,
-                Password = model.password
+                Username = model.Username,
+                Email = model.Email,
+                FirstName = model.Fname,
+                LastName = model.Lname,
+                Password = model.Password
             };
             ac.RegisterUser(user);
             TempData["Succes"] = "Uw account is succesvol aangemaakt.";

@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "";
 }
+@using SLT_Site.Models.Home
 @model AccountModel
 
 <!DOCTYPE html>
@@ -17,34 +18,34 @@
 {
     <div>
         <div>
-            @Html.LabelFor(x => x.username)
-            @Html.TextBoxFor(x => x.username)
-            @Html.ValidationMessageFor(x => x.username,"",new {@style= "color: red;"} )
+            @Html.LabelFor(x => x.Username)
+            @Html.TextBoxFor(x => x.Username)
+            @Html.ValidationMessageFor(x => x.Username)
         </div>
         <div>
-            @Html.LabelFor(x => x.password)
-            @Html.PasswordFor(x => x.password)
-            @Html.ValidationMessageFor(x => x.password)
+            @Html.LabelFor(x => x.Password)
+            @Html.PasswordFor(x => x.Password)
+            @Html.ValidationMessageFor(x => x.Password)
         </div>
         <div>
-            @Html.LabelFor(x => x.password2)
-            @Html.PasswordFor(x => x.password2)
-            @Html.ValidationMessageFor(x => x.password2)
+            @Html.LabelFor(x => x.Password2)
+            @Html.PasswordFor(x => x.Password2)
+            @Html.ValidationMessageFor(x => x.Password2)
         </div>
         <div>
-            @Html.LabelFor(x => x.email)
-            @Html.TextBoxFor(x => x.email)
-            @Html.ValidationMessageFor(x => x.email)
+            @Html.LabelFor(x => x.Email)
+            @Html.TextBoxFor(x => x.Email)
+            @Html.ValidationMessageFor(x => x.Email)
         </div>
         <div>
-            @Html.LabelFor(x => x.fname)
-            @Html.TextBoxFor(x => x.fname)
-            @Html.ValidationMessageFor(x => x.fname)
+            @Html.LabelFor(x => x.Fname)
+            @Html.TextBoxFor(x => x.Fname)
+            @Html.ValidationMessageFor(x => x.Fname)
         </div>
         <div>
-            @Html.LabelFor(x => x.lname)
-            @Html.TextBoxFor(x => x.lname)
-            @Html.ValidationMessageFor(x => x.lname)
+            @Html.LabelFor(x => x.Lname)
+            @Html.TextBoxFor(x => x.Lname)
+            @Html.ValidationMessageFor(x => x.Lname)
         </div>
         <div>
             <input type="submit" value="Save" />

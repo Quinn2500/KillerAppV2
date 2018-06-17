@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using DataModellen;
 using MySql.Data.MySqlClient;
 
 namespace DAL
 {
     public abstract class DataBaseCalls
     {
-        private MySqlConnection mConn = new MySqlConnection("Server=localhost; database=sltdatabase; UID=root; password=; Sslmode=none;");
-        public MySqlConnection Conn
-        {
-            get { return mConn; }
-        }
+        private MySqlConnection mConn = new MySqlConnection("Server=localhost; database=sltdatabase; UID=root; password=; Sslmode=none");
+        public MySqlConnection Conn => mConn;
 
         public string TestConnection()
         {

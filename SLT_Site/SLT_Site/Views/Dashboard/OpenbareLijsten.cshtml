@@ -1,5 +1,4 @@
-﻿@using Business
-@using DataModellen
+﻿@using DataModellen
 @model SLT_Site.Models.Dashboard.PublicListModel
 
 <head>
@@ -15,6 +14,7 @@
                 <text>
                     <div class="BtnDiv">
                         <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("ZieLijst", "Dashboard", new {id = n.Titel + "?" + n.Gebruikersnaam})'">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum</button>
+                        <button class="btn btn-info" onclick="window.location.href = '@Url.Action("OptieMenu", "Overhoring", new {id = n.Gebruikersnaam +"?"+ n.Titel})'">Overhoren</button>
                     </div>
                 </text>
             }
@@ -26,6 +26,7 @@
                 <text>
                     <div class="BtnDiv">
                         <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("ZieLijst", "Dashboard", new {id = n.Titel + "?" + n.Gebruikersnaam})'">@n.Titel - @n.Gebruikersnaam - @n.Soort - @n.Datum</button>
+                        <button class="btn btn-info" onclick="window.location.href = '@Url.Action("OptieMenu", "Overhoring", new {id = n.Titel + "?" + n.Gebruikersnaam}))'">Overhoren</button>
                     </div>
                 </text>
             }

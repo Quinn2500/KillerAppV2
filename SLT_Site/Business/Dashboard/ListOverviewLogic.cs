@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 using DataModellen;
 using DAL;
 
@@ -30,7 +29,7 @@ namespace Business.Dashboard
             {
                 Datum = data.Rows[0][3].ToString(),
                 Gebruikersnaam = data.Rows[0][1].ToString(),
-                isPublic = Convert.ToInt32(data.Rows[0][6]),
+                IsPublic = Convert.ToInt32(data.Rows[0][6]),
                 Soort = data.Rows[0][2].ToString(),
                 Titel = lijstnaam,
                 WoordenLijst = lijst

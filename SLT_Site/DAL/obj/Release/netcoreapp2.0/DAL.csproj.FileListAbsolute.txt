@@ -1,0 +1,11 @@
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DAL\bin\Release\netcoreapp2.0\DAL.deps.json
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DAL\bin\Release\netcoreapp2.0\DAL.dll
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DAL\bin\Release\netcoreapp2.0\DAL.pdb
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DAL\bin\Release\netcoreapp2.0\DataModellen.dll
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DAL\bin\Release\netcoreapp2.0\DataModellen.pdb
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DAL\obj\Release\netcoreapp2.0\DAL.csprojResolveAssemblyReference.cache
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DAL\obj\Release\netcoreapp2.0\DAL.csproj.CoreCompileInputs.cache
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DAL\obj\Release\netcoreapp2.0\DAL.AssemblyInfoInputs.cache
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DAL\obj\Release\netcoreapp2.0\DAL.AssemblyInfo.cs
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DAL\obj\Release\netcoreapp2.0\DAL.dll
+D:\GitKraken\Repos\KillerAppV2\SLT_Site\DAL\obj\Release\netcoreapp2.0\DAL.pdb

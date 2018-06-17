@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "";
 }
-@using Microsoft.AspNetCore.Razor.Language.Intermediate
+@using SLT_Site.Models.Home
 @model IndexModel
 
 <!DOCTYPE html>
@@ -19,14 +19,14 @@
         {
             <div id="loginBox" class="centerItem">
                 <div>
-                    @Html.LabelFor(x => x.username)
-                    @Html.TextBoxFor(x => x.username)
-                    @Html.ValidationMessageFor(x => x.username)
+                    @Html.LabelFor(x => x.Username)
+                    @Html.TextBoxFor(x => x.Username)
+                    @Html.ValidationMessageFor(x => x.Username)
                 </div>
                 <div>
-                    @Html.LabelFor(x => x.password)
-                    @Html.PasswordFor(x => x.password)
-                    @Html.ValidationMessageFor(x => x.password)
+                    @Html.LabelFor(x => x.Password)
+                    @Html.PasswordFor(x => x.Password)
+                    @Html.ValidationMessageFor(x => x.Password)
                 </div>
                 <div id="loginButton" class="centerItem">
                     <input type="submit" value="Log In!" />
