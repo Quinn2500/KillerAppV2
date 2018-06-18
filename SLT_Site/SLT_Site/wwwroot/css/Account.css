@@ -1,0 +1,48 @@
+﻿input{
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    margin: 0 auto;
+    width: 150px;
+}
+
+#mainContent {
+    margin: auto;
+    width: 250px;
+    height: 600px
+}
+
+#MainLogo {
+    font: 600 1.5em/1 'Raleway', sans-serif;
+    color: darkblue;
+    background-color: aquamarine;
+    border-radius: 6px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    top: 25%;
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+form {
+    width: 250px;
+    top: 150px;
+    position: absolute;
+}
+
+form > * {
+    width: 100%;
+    text-align: center;
+}

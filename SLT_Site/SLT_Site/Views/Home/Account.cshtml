@@ -8,51 +8,50 @@
 <html lang="en">
 <head>
     <title>SLT</title>
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/site.css")"/>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/Account.css")"/>
 </head>
 <body>
-<div id="MainLogo">
-    <h3>Student Leer Tool</h3>
-</div>
-@using(Html.BeginForm())
-{
-    <div>
-        <div>
-            @Html.LabelFor(x => x.Username)
-            @Html.TextBoxFor(x => x.Username)
-            @Html.ValidationMessageFor(x => x.Username)
+    <div id="mainContent">
+        <div id="MainLogo">
+            <h3>Student Leer Tool</h3>
         </div>
-        <div>
-            @Html.LabelFor(x => x.Password)
-            @Html.PasswordFor(x => x.Password)
-            @Html.ValidationMessageFor(x => x.Password)
-        </div>
-        <div>
-            @Html.LabelFor(x => x.Password2)
-            @Html.PasswordFor(x => x.Password2)
-            @Html.ValidationMessageFor(x => x.Password2)
-        </div>
-        <div>
-            @Html.LabelFor(x => x.Email)
-            @Html.TextBoxFor(x => x.Email)
-            @Html.ValidationMessageFor(x => x.Email)
-        </div>
-        <div>
-            @Html.LabelFor(x => x.Fname)
-            @Html.TextBoxFor(x => x.Fname)
-            @Html.ValidationMessageFor(x => x.Fname)
-        </div>
-        <div>
-            @Html.LabelFor(x => x.Lname)
-            @Html.TextBoxFor(x => x.Lname)
-            @Html.ValidationMessageFor(x => x.Lname)
-        </div>
-        <div>
-            <input type="submit" value="Save" />
-        </div>
+        @using (Html.BeginForm())
+        {
+                <div>
+                    @Html.LabelFor(x => x.Username)
+                    @Html.TextBoxFor(x => x.Username)
+                    @Html.ValidationMessageFor(x => x.Username)
+                </div>
+                <div>
+                    @Html.LabelFor(x => x.Password)
+                    @Html.PasswordFor(x => x.Password)
+                    @Html.ValidationMessageFor(x => x.Password)
+                </div>
+                <div>
+                    @Html.LabelFor(x => x.Password2)
+                    @Html.PasswordFor(x => x.Password2)
+                    @Html.ValidationMessageFor(x => x.Password2)
+                </div>
+                <div>
+                    @Html.LabelFor(x => x.Email)
+                    @Html.TextBoxFor(x => x.Email)
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+                <div>
+                    @Html.LabelFor(x => x.Fname)
+                    @Html.TextBoxFor(x => x.Fname)
+                    @Html.ValidationMessageFor(x => x.Fname)
+                </div>
+                <div>
+                    @Html.LabelFor(x => x.Lname)
+                    @Html.TextBoxFor(x => x.Lname)
+                    @Html.ValidationMessageFor(x => x.Lname)
+                </div>
+                <div>
+                    <input type="submit" value="Creëer Account" />
+                </div>
+        }
     </div>
-}
-
 @if (ViewData["Bericht"] != null)
 {
     <div>

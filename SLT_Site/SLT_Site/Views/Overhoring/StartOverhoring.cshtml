@@ -34,11 +34,8 @@
                 i++;
             }
              if (i == wordsArray.length) {
-                 $("#AantalFout").text("Aantal fout: " + fout);
-                 $("#AantalGoed").text("Aantal goed: " + goed);
-                 $("#textInput").val("");
                  alert("De overhoring is agelopen,\nJe had " + goed + " vragen goed!\nJe had " + fout + " vragen fout!");
-                 window.location.href = '@Url.Action("Index", "dashboard")';
+                 window.location.href = '@Url.Action("Index", "Dashboard")';
                 }
             else
             {

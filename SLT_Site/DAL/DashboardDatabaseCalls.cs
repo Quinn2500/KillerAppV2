@@ -85,7 +85,7 @@ namespace DAL
         public DataTable GetOpenbareLijsten(string username)
         {
             MySqlParameter p = new MySqlParameter("@Username", username);
-            return Select("SELECT * FROM `lijst` WHERE lijst.Openbaar = 1 && lijst.Gebruikersnaam != @Username", p);
+            return Select("SELECT * FROM `lijst` WHERE lijst.Openbaar = 1 && lijst.Gebruikersnaam != @Username && lijst.Goedkgekeurd = 0", p);
         }
 
         public void DeleteList(int id)

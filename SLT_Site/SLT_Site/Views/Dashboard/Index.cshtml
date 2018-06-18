@@ -3,6 +3,20 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/css/DashboardIndex.css")" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $( ".btn-danger" ).click(function() {
+                var ans = confirm('Weet je zeker dat je deze lijst wilt verwijderen?');
+                if (ans) {
+                    var url = '@Url.Action("DeleteList", "Dashboard", new { id = "__id__" })';
+                    window.location.href = url.replace('__id__', $(this).attr('id'));
+                } else {
+                    window.location.href = '@Url.Action("Index", "Dashboard")';
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <div id="AllLijsten">
@@ -12,7 +26,7 @@
             <div class="LijstBlok">
                 <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("ZieLijst", "Dashboard", new { id = n})'">@n</button>
                 <button class="btn btn-info" onclick="window.location.href = '@Url.Action("OptieMenu", "Overhoring", new { id = n})'">Overhoren</button>
-                <a class="btn btn-danger" onclick="window.location.href = '@Url.Action("DeleteList", "Dashboard", new { id = n})'"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
+                <a class="btn btn-danger" id="@n"> <span class="glyphicon glyphicon-trash"></span> Delete</a>
             </div>
         </text>
     }
